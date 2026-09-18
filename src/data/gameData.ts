@@ -364,56 +364,56 @@ export const stagesData: Stage[] = [
           id: "dz-0",
           label: "Pusat Komando Sel (Balai Desa)",
           description: "Mengatur seluruh kegiatan sel dan menyimpan materi genetik (DNA).",
-          image: "__MEDIA__asset_030.png",
+          image: "__MEDIA__organelle_nucleus.png",
           correctElementIds: ["0"],
-          x: 36.6,
-          y: 13.3,
-          width: 22,
+          x: 39.0,
+          y: 12.0,
+          width: 17,
           height: 16
         },
         {
           id: "dz-1",
-          label: "Pusat Sortir & Pengemasan (Pasar)",
+          label: "Pusat Sortir & Pengemasan (Pasar Desa)",
           description: "Memodifikasi, menyortir, dan mengemas molekul untuk sekresi atau penggunaan internal.",
-          image: "__MEDIA__asset_034.png",
+          image: "__MEDIA__organelle_golgi.png",
           correctElementIds: ["1"],
-          x: 13.9,
-          y: 37.6,
-          width: 22,
+          x: 14.0,
+          y: 39.0,
+          width: 18,
           height: 16
         },
         {
           id: "dz-2",
-          label: "Jalur Transportasi Internal (Greenhouse & Labirin)",
+          label: "Jalur Transportasi Internal (Pelabuhan Desa)",
           description: "Jaringan membran berlipat dan bertubulus untuk sintesis dan transportasi zat.",
-          image: "__MEDIA__asset_032.png",
+          image: "__MEDIA__organelle_endoplasmic.png",
           correctElementIds: ["2"],
-          x: 11.3,
-          y: 73.1,
-          width: 24,
-          height: 16
+          x: 16.0,
+          y: 69.0,
+          width: 18,
+          height: 17
         },
         {
           id: "dz-3",
-          label: "Pembangkit Energi ATP (Pabrik Industri)",
+          label: "Pembangkit Energi ATP (Pembangkit Energi)",
           description: "Menghasilkan energi sel melalui respirasi seluler untuk seluruh aktivitas sel.",
-          image: "__MEDIA__asset_031.png",
+          image: "__MEDIA__organelle_mitochondria.png",
           correctElementIds: ["3"],
-          x: 78.3,
-          y: 22.1,
-          width: 20,
-          height: 16
+          x: 78.0,
+          y: 25.0,
+          width: 18,
+          height: 17
         },
         {
           id: "dz-4",
-          label: "Gerbang Pelindung Sel (Dermaga & Perahu)",
+          label: "Gerbang Pelindung Sel (Gerbang Desa)",
           description: "Mengatur lalu lintas zat yang masuk dan keluar secara selektif permeabel.",
-          image: "__MEDIA__asset_033.png",
+          image: "__MEDIA__organelle_membrane.png",
           correctElementIds: ["4"],
-          x: 40.4,
-          y: 73.1,
-          width: 22,
-          height: 16
+          x: 42.0,
+          y: 73.0,
+          width: 16,
+          height: 18
         }
       ]
     }

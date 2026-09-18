@@ -11,7 +11,7 @@ import { Check, X, RotateCcw, HelpCircle, CheckCircle2, ArrowRight } from 'lucid
 
 interface DragDropActivityProps {
   task: DragDropTask;
-  onComplete: (scoreData?: { skor: number; skor_maksimal?: number }) => void;
+  onComplete: (scoreData?: { skor: number; skor_maksimal?: number; esai?: string; status?: 'lulus' | 'belum_lulus' }) => void;
   title?: string;
   isAlreadyCleared?: boolean;
 }
