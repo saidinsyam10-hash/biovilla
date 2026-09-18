@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  
+  <defs>
+    <!-- Card Frame Shadows & Blurs -->
+    <filter id="cardDropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+    <filter id="organelleGroundShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" />
+    </filter>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" />
+    </filter>
+
+    <!-- NUKLEUS GRADIENTS (Ungu Gelap ke Ungu Muda) -->
+    <radialGradient id="nucEnvelopeGrad" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="25%" stop-color="#9333ea" />
+      <stop offset="60%" stop-color="#6b21a8" />
+      <stop offset="90%" stop-color="#4c1d95" />
+      <stop offset="100%" stop-color="#2e1065" />
+    </radialGradient>
+    <radialGradient id="nucNucleoplasmGrad" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#7e22ce" />
+      <stop offset="50%" stop-color="#581c87" />
+      <stop offset="100%" stop-color="#3b0764" />
+    </radialGradient>
+    <radialGradient id="nucNucleolusGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="40%" stop-color="#581c87" />
+      <stop offset="85%" stop-color="#3b0764" />
+      <stop offset="100%" stop-color="#1e0538" />
+    </radialGradient>
+    <linearGradient id="nucPoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d8b4fe" />
+      <stop offset="100%" stop-color="#3b0764" />
+    </linearGradient>
+
+    <!-- BADAN GOLGI GRADIENTS (Oranye ke Kuning) -->
+    <linearGradient id="golgiCisternae1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="30%" stop-color="#facc15" />
+      <stop offset="70%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#9a3412" />
+    </linearGradient>
+    <linearGradient id="golgiCisternae2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fde047" />
+      <stop offset="35%" stop-color="#fb923c" />
+      <stop offset="75%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#7c2d12" />
+    </linearGradient>
+    <radialGradient id="golgiVesicleGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="40%" stop-color="#f59e0b" />
+      <stop offset="80%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#9a3412" />
+    </radialGradient>
+
+    <!-- RETIKULUM ENDOPLASMA GRADIENTS (Biru Muda ke Biru Tua) -->
+    <linearGradient id="erSheetGrad1" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd" />
+      <stop offset="25%" stop-color="#38bdf8" />
+      <stop offset="65%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0c4a6e" />
+    </linearGradient>
+    <linearGradient id="erSheetGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7dd3fc" />
+      <stop offset="35%" stop-color="#0ea5e9" />
+      <stop offset="75%" stop-color="#0369a1" />
+      <stop offset="100%" stop-color="#082f49" />
+    </linearGradient>
+    <radialGradient id="ribosomeGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#e0f2fe" />
+      <stop offset="40%" stop-color="#38bdf8" />
+      <stop offset="90%" stop-color="#0369a1" />
+      <stop offset="100%" stop-color="#082f49" />
+    </radialGradient>
+
+    <!-- MITOKONDRIA GRADIENTS (Merah-Oranye) -->
+    <linearGradient id="mitoOuterGrad" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#f87171" />
+      <stop offset="30%" stop-color="#ef4444" />
+      <stop offset="65%" stop-color="#dc2626" />
+      <stop offset="90%" stop-color="#991b1b" />
+      <stop offset="100%" stop-color="#450a0a" />
+    </linearGradient>
+    <radialGradient id="mitoMatrixGrad" cx="40%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#ea580c" />
+      <stop offset="50%" stop-color="#c2410c" />
+      <stop offset="90%" stop-color="#7c2d12" />
+      <stop offset="100%" stop-color="#431407" />
+    </radialGradient>
+    <linearGradient id="cristaeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="35%" stop-color="#f97316" />
+      <stop offset="75%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#9a3412" />
+    </linearGradient>
+
+    <!-- MEMBRAN SEL GRADIENTS (Hijau Muda Transparan) -->
+    <radialGradient id="lipidHeadGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#dcfce7" />
+      <stop offset="35%" stop-color="#86efac" />
+      <stop offset="70%" stop-color="#22c55e" />
+      <stop offset="100%" stop-color="#15803d" />
+    </radialGradient>
+    <linearGradient id="tailGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80" />
+      <stop offset="50%" stop-color="#22c55e" />
+      <stop offset="100%" stop-color="#166534" />
+    </linearGradient>
+    <linearGradient id="proteinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#86efac" />
+      <stop offset="30%" stop-color="#3b82f6" />
+      <stop offset="70%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1e40af" />
+    </linearGradient>
+    <radialGradient id="proteinPoreGrad" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="60%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#172554" />
+    </radialGradient>
+  </defs>
+
+
+  <!-- White Rounded Square Card Base Frame (Clean White Background) -->
+  <rect x="2" y="2" width="236" height="236" rx="28" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" />
+
+  <!-- Organelle Artwork (No Text, No Numbers) -->
+  
+    <!-- Soft Ground Shadow for 3D depth -->
+    <ellipse cx="120" cy="187" rx="72" ry="18" fill="#0f172a" opacity="0.10" filter="url(#organelleGroundShadow)" />
+
+    <g>
+      <!-- Interconnected Branching Labyrinth Sheets & Tubules (Labirin Membran Berlipat & Bercabang) -->
+      <!-- Background Fold Layer -->
+      <path d="M 55 95 
+               C 45 135, 70 165, 100 160
+               C 130 155, 145 170, 175 160
+               C 195 150, 190 105, 165 90
+               C 145 80, 165 60, 130 55
+               C 95 50, 75 70, 55 95 Z" 
+            fill="url(#erSheetGrad2)" stroke="#0c4a6e" stroke-width="2.5" />
+
+      <!-- Folded Cisternal Convolutions (Lipatan-lipatan labirin bergelombang) -->
+      <!-- Fold Sheet 1 (Top Left to Center) -->
+      <path d="M 70 75 
+               C 90 90, 110 65, 135 75
+               C 155 83, 135 105, 115 100
+               C 95 95, 80 110, 65 90 Z" 
+            fill="url(#erSheetGrad1)" stroke="#0284c7" stroke-width="2" />
+
+      <!-- Fold Sheet 2 (Center Labyrinth Loop) -->
+      <path d="M 75 110 
+               C 95 123, 120 107, 145 120
+               C 165 133, 175 110, 155 95
+               C 135 85, 110 90, 90 97 Z" 
+            fill="url(#erSheetGrad1)" stroke="#0369a1" stroke-width="2" />
+
+      <!-- Fold Sheet 3 (Middle-Bottom Convolution) -->
+      <path d="M 65 130 
+               C 85 145, 105 130, 130 140
+               C 150 150, 170 135, 178 123
+               C 182 137, 155 163, 130 157
+               C 105 153, 80 160, 60 143 Z" 
+            fill="url(#erSheetGrad1)" stroke="#0284c7" stroke-width="2" />
+
+      <!-- Connecting Branching Tubules (Tabung Penghubung) -->
+      <path d="M 102 67 C 105 90, 100 110, 104 133" 
+            fill="none" stroke="#7dd3fc" stroke-width="6" stroke-linecap="round" opacity="0.85" />
+      <path d="M 142 79 C 146 103, 138 125, 145 147" 
+            fill="none" stroke="#7dd3fc" stroke-width="6" stroke-linecap="round" opacity="0.85" />
+
+      <!-- Granular Texture Dots: Ribosomes on Rough ER (Tekstur Kasar Berbintik Ribosom) -->
+      <g>
+        <!-- Top fold ribosomes -->
+        <circle cx="78" cy="80" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="86" cy="77" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="95" cy="83" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="104" cy="77" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="114" cy="71" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="125" cy="73" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="135" cy="70" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="146" cy="77" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+
+        <!-- Mid fold ribosomes -->
+        <circle cx="72" cy="101" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="82" cy="97" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="92" cy="103" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="102" cy="99" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="112" cy="105" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="122" cy="100" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="134" cy="107" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="146" cy="101" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="158" cy="105" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="168" cy="111" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+
+        <!-- Lower fold ribosomes -->
+        <circle cx="70" cy="123" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="82" cy="121" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="92" cy="127" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="104" cy="123" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="116" cy="130" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="128" cy="127" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="140" cy="133" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="152" cy="129" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="164" cy="133" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+
+        <!-- Bottom fold ribosomes -->
+        <circle cx="75" cy="143" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="90" cy="149" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="105" cy="143" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="120" cy="150" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="136" cy="147" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="152" cy="153" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+        <circle cx="168" cy="145" r="2.8" fill="url(#ribosomeGrad)" stroke="#082f49" stroke-width="0.8" />
+      </g>
+
+      <!-- Glossy 3D Highlight Reflections on Curved Ridge Sheets -->
+      <path d="M 75 73 Q 110 63, 145 71" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.65" />
+      <path d="M 80 95 Q 120 103, 160 93" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.6" />
+      <path d="M 85 119 Q 120 129, 158 121" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.55" />
+    </g>
+  
+</svg>

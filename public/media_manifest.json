@@ -1,0 +1,645 @@
+{
+  "updatedAt": "2026-09-18T06:50:24.280Z",
+  "items": {
+    "Gemini_Generated_Image_m2ivxjm2ivxjm2iv.jpg": {
+      "key": "Gemini_Generated_Image_m2ivxjm2ivxjm2iv.jpg",
+      "filename": "Gemini_Generated_Image_m2ivxjm2ivxjm2iv.jpg",
+      "url": "/assets/Gemini_Generated_Image_m2ivxjm2ivxjm2iv.jpg",
+      "updatedAt": "2026-09-18T07:01:00.000Z",
+      "size": 160807,
+      "mimeType": "image/jpeg"
+    },
+    "__MEDIA__asset_028.jpeg": {
+      "key": "__MEDIA__asset_028.jpeg",
+      "filename": "asset_028.jpeg",
+      "url": "/assets/asset_028.jpeg",
+      "updatedAt": "2026-09-17T14:22:52.450Z",
+      "size": 123426,
+      "mimeType": "image/webp"
+    },
+    "asset_028.jpeg": {
+      "key": "asset_028.jpeg",
+      "filename": "asset_028.jpeg",
+      "url": "/assets/asset_028.jpeg",
+      "updatedAt": "2026-09-18T06:20:35.879Z",
+      "size": 123426,
+      "mimeType": "image/webp"
+    },
+    "asset_002": {
+      "key": "asset_002",
+      "filename": "asset_002.png",
+      "url": "/assets/asset_002.png",
+      "updatedAt": "2026-09-18T06:07:04.484Z",
+      "size": 516143,
+      "mimeType": "image/jpeg"
+    },
+    "asset_003.png": {
+      "key": "asset_003.png",
+      "filename": "asset_003.png",
+      "url": "/assets/asset_003.png",
+      "updatedAt": "2026-09-17T12:17:31.578Z",
+      "size": 82210,
+      "mimeType": "image/png"
+    },
+    "asset_005.png": {
+      "key": "asset_005.png",
+      "filename": "asset_005.png",
+      "url": "/assets/asset_005.png",
+      "updatedAt": "2026-09-17T12:03:49.262Z",
+      "size": 74318,
+      "mimeType": "image/webp"
+    },
+    "asset_007.png": {
+      "key": "asset_007.png",
+      "filename": "asset_007.png",
+      "url": "/assets/asset_007.png",
+      "updatedAt": "2026-09-17T12:03:49.262Z",
+      "size": 72152,
+      "mimeType": "image/webp"
+    },
+    "asset_009.png": {
+      "key": "asset_009.png",
+      "filename": "asset_009.png",
+      "url": "/assets/asset_009.png",
+      "updatedAt": "2026-09-17T12:03:49.263Z",
+      "size": 73580,
+      "mimeType": "image/webp"
+    },
+    "asset_011.png": {
+      "key": "asset_011.png",
+      "filename": "asset_011.png",
+      "url": "/assets/asset_011.png",
+      "updatedAt": "2026-09-17T12:03:49.263Z",
+      "size": 75502,
+      "mimeType": "image/webp"
+    },
+    "asset_013.png": {
+      "key": "asset_013.png",
+      "filename": "asset_013.png",
+      "url": "/assets/asset_013.png",
+      "updatedAt": "2026-09-17T12:03:49.263Z",
+      "size": 67866,
+      "mimeType": "image/webp"
+    },
+    "asset_015": {
+      "key": "asset_015.jpeg",
+      "filename": "asset_015.jpeg",
+      "url": "/assets/asset_015.jpeg",
+      "updatedAt": "2026-09-18T07:01:00.000Z",
+      "size": 160807,
+      "mimeType": "image/jpeg"
+    },
+    "__MEDIA__asset_015.jpeg": {
+      "key": "__MEDIA__asset_015.jpeg",
+      "filename": "asset_015.jpeg",
+      "url": "/assets/asset_015.jpeg",
+      "updatedAt": "2026-09-18T07:01:00.000Z",
+      "size": 160807,
+      "mimeType": "image/jpeg"
+    },
+    "asset_015.jpeg": {
+      "key": "asset_015.jpeg",
+      "filename": "asset_015.jpeg",
+      "url": "/assets/asset_015.jpeg",
+      "updatedAt": "2026-09-18T07:01:00.000Z",
+      "size": 160807,
+      "mimeType": "image/jpeg"
+    },
+    "hotspot_hotspot-0-0": {
+      "key": "hotspot_hotspot-0-0",
+      "filename": "hotspot_hotspot-0-0.webp",
+      "url": "/assets/hotspot_hotspot-0-0.webp",
+      "updatedAt": "2026-09-18T06:29:43.191Z",
+      "size": 80192,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-0-1": {
+      "key": "hotspot_hotspot-0-1",
+      "filename": "hotspot_hotspot-0-1.webp",
+      "url": "/assets/hotspot_hotspot-0-1.webp",
+      "updatedAt": "2026-09-18T06:29:57.005Z",
+      "size": 72074,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-0-2": {
+      "key": "hotspot_hotspot-0-2",
+      "filename": "hotspot_hotspot-0-2.webp",
+      "url": "/assets/hotspot_hotspot-0-2.webp",
+      "updatedAt": "2026-09-18T06:30:10.077Z",
+      "size": 70440,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-0-3": {
+      "key": "hotspot_hotspot-0-3",
+      "filename": "hotspot_hotspot-0-3.webp",
+      "url": "/assets/hotspot_hotspot-0-3.webp",
+      "updatedAt": "2026-09-18T06:30:21.531Z",
+      "size": 71382,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-0-4": {
+      "key": "hotspot_hotspot-0-4",
+      "filename": "hotspot_hotspot-0-4.webp",
+      "url": "/assets/hotspot_hotspot-0-4.webp",
+      "updatedAt": "2026-09-18T06:30:39.539Z",
+      "size": 73648,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-0-5": {
+      "key": "hotspot_hotspot-0-5",
+      "filename": "hotspot_hotspot-0-5.webp",
+      "url": "/assets/hotspot_hotspot-0-5.webp",
+      "updatedAt": "2026-09-18T06:32:13.651Z",
+      "size": 66038,
+      "mimeType": "image/webp"
+    },
+    "petunjuk_image": {
+      "key": "petunjuk_image",
+      "filename": "petunjuk_image.webp",
+      "url": "/assets/petunjuk_image.webp",
+      "updatedAt": "2026-09-18T07:01:00.000Z",
+      "size": 160807,
+      "mimeType": "image/webp"
+    },
+    "asset_035.mp4": {
+      "key": "asset_035.mp4",
+      "filename": "asset_035.mp4",
+      "url": "/assets/asset_035.mp4",
+      "updatedAt": "2026-09-17T14:49:05.084Z",
+      "size": 6861236,
+      "mimeType": "video/mp4"
+    },
+    "asset_035": {
+      "key": "asset_035",
+      "filename": "asset_035.mp4",
+      "url": "/assets/asset_035.mp4",
+      "updatedAt": "2026-09-17T14:25:48.370Z",
+      "size": 9148338,
+      "mimeType": "video/mp4"
+    },
+    "asset_027.jpeg": {
+      "key": "asset_027.jpeg",
+      "filename": "asset_027.jpeg",
+      "url": "/assets/asset_027.jpeg",
+      "updatedAt": "2026-09-17T14:24:36.978Z",
+      "size": 326928,
+      "mimeType": "image/webp"
+    },
+    "asset_027": {
+      "key": "asset_027",
+      "filename": "asset_027.webp",
+      "url": "/assets/asset_027.webp",
+      "updatedAt": "2026-09-17T16:04:38.173Z",
+      "size": 547000,
+      "mimeType": "image/webp"
+    },
+    "level2_town_bg.jpg": {
+      "key": "level2_town_bg.jpg",
+      "filename": "level2_town_bg.jpg",
+      "url": "/assets/level2_town_bg.jpg",
+      "updatedAt": "2026-09-17T16:04:38.173Z",
+      "size": 746000,
+      "mimeType": "image/jpeg"
+    },
+    "level2_town_bg": {
+      "key": "level2_town_bg",
+      "filename": "level2_town_bg.webp",
+      "url": "/assets/level2_town_bg.webp",
+      "updatedAt": "2026-09-17T16:04:38.173Z",
+      "size": 547000,
+      "mimeType": "image/webp"
+    },
+    "Gemini_Generated_Image_m2ivxjm2ivxjm2iv": {
+      "key": "Gemini_Generated_Image_m2ivxjm2ivxjm2iv",
+      "filename": "Gemini_Generated_Image_m2ivxjm2ivxjm2iv.jpg",
+      "url": "/assets/Gemini_Generated_Image_m2ivxjm2ivxjm2iv.jpg",
+      "updatedAt": "2026-09-17T12:17:07.549Z",
+      "size": 86310,
+      "mimeType": "image/webp"
+    },
+    "asset_003": {
+      "key": "asset_003",
+      "filename": "asset_003.png",
+      "url": "/assets/asset_003.png",
+      "updatedAt": "2026-09-17T12:17:31.578Z",
+      "size": 82210,
+      "mimeType": "image/png"
+    },
+    "asset_036": {
+      "key": "asset_036",
+      "filename": "asset_036.png",
+      "url": "/assets/asset_036.png",
+      "updatedAt": "2026-09-18T06:21:16.789Z",
+      "size": 2293226,
+      "mimeType": "image/png"
+    },
+    "asset_036.png": {
+      "key": "asset_036.png",
+      "filename": "asset_036.png",
+      "url": "/assets/asset_036.png",
+      "updatedAt": "2026-09-18T06:21:16.819Z",
+      "size": 2293226,
+      "mimeType": "image/png"
+    },
+    "hotspot_hotspot-1-0": {
+      "key": "hotspot_hotspot-1-0",
+      "filename": "hotspot_hotspot-1-0.webp",
+      "url": "/assets/hotspot_hotspot-1-0.webp",
+      "updatedAt": "2026-09-18T06:17:01.162Z",
+      "size": 132538,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-1-1": {
+      "key": "hotspot_hotspot-1-1",
+      "filename": "hotspot_hotspot-1-1.webp",
+      "url": "/assets/hotspot_hotspot-1-1.webp",
+      "updatedAt": "2026-09-18T06:16:17.506Z",
+      "size": 150116,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-1-2": {
+      "key": "hotspot_hotspot-1-2",
+      "filename": "hotspot_hotspot-1-2.webp",
+      "url": "/assets/hotspot_hotspot-1-2.webp",
+      "updatedAt": "2026-09-18T06:17:18.320Z",
+      "size": 146550,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-1-3": {
+      "key": "hotspot_hotspot-1-3",
+      "filename": "hotspot_hotspot-1-3.webp",
+      "url": "/assets/hotspot_hotspot-1-3.webp",
+      "updatedAt": "2026-09-18T06:17:38.670Z",
+      "size": 143538,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-1-4": {
+      "key": "hotspot_hotspot-1-4",
+      "filename": "hotspot_hotspot-1-4.webp",
+      "url": "/assets/hotspot_hotspot-1-4.webp",
+      "updatedAt": "2026-09-18T06:17:58.896Z",
+      "size": 119182,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-1-5": {
+      "key": "hotspot_hotspot-1-5",
+      "filename": "hotspot_hotspot-1-5.webp",
+      "url": "/assets/hotspot_hotspot-1-5.webp",
+      "updatedAt": "2026-09-18T06:18:15.634Z",
+      "size": 162302,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-1-6": {
+      "key": "hotspot_hotspot-1-6",
+      "filename": "hotspot_hotspot-1-6.webp",
+      "url": "/assets/hotspot_hotspot-1-6.webp",
+      "updatedAt": "2026-09-18T06:18:32.204Z",
+      "size": 117802,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-1-7": {
+      "key": "hotspot_hotspot-1-7",
+      "filename": "hotspot_hotspot-1-7.webp",
+      "url": "/assets/hotspot_hotspot-1-7.webp",
+      "updatedAt": "2026-09-18T06:18:53.155Z",
+      "size": 127078,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-1-8": {
+      "key": "hotspot_hotspot-1-8",
+      "filename": "hotspot_hotspot-1-8.webp",
+      "url": "/assets/hotspot_hotspot-1-8.webp",
+      "updatedAt": "2026-09-18T06:19:14.782Z",
+      "size": 147902,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-1-9": {
+      "key": "hotspot_hotspot-1-9",
+      "filename": "hotspot_hotspot-1-9.webp",
+      "url": "/assets/hotspot_hotspot-1-9.webp",
+      "updatedAt": "2026-09-18T06:19:34.821Z",
+      "size": 140988,
+      "mimeType": "image/webp"
+    },
+    "hotspot_hotspot-1-10": {
+      "key": "hotspot_hotspot-1-10",
+      "filename": "hotspot_hotspot-1-10.webp",
+      "url": "/assets/hotspot_hotspot-1-10.webp",
+      "updatedAt": "2026-09-18T06:20:12.986Z",
+      "size": 150108,
+      "mimeType": "image/webp"
+    },
+    "asset_029.png": {
+      "key": "asset_029.png",
+      "filename": "asset_029.png",
+      "url": "/assets/asset_029.png",
+      "updatedAt": "2026-09-17T12:54:14.158Z",
+      "size": 152301,
+      "mimeType": "image/png"
+    },
+    "asset_029": {
+      "key": "asset_029",
+      "filename": "asset_029.png",
+      "url": "/assets/asset_029.png",
+      "updatedAt": "2026-09-17T12:54:14.158Z",
+      "size": 152301,
+      "mimeType": "image/png"
+    },
+    "__MEDIA__asset_029.png": {
+      "key": "__MEDIA__asset_029.png",
+      "filename": "asset_029.png",
+      "url": "/assets/asset_029.png",
+      "updatedAt": "2026-09-17T12:54:14.158Z",
+      "size": 152301,
+      "mimeType": "image/png"
+    },
+    "organelle_nucleus": {
+      "key": "organelle_nucleus",
+      "filename": "organelle_nucleus.png",
+      "url": "/assets/organelle_nucleus.png",
+      "updatedAt": "2026-09-17T13:23:56.527Z",
+      "size": 31105,
+      "mimeType": "image/png"
+    },
+    "organelle_mitochondria": {
+      "key": "organelle_mitochondria",
+      "filename": "organelle_mitochondria.png",
+      "url": "/assets/organelle_mitochondria.png",
+      "updatedAt": "2026-09-17T13:23:56.527Z",
+      "size": 23175,
+      "mimeType": "image/png"
+    },
+    "organelle_chloroplast": {
+      "key": "organelle_chloroplast",
+      "filename": "organelle_chloroplast.png",
+      "url": "/assets/organelle_chloroplast.png",
+      "updatedAt": "2026-09-17T12:54:14.158Z",
+      "size": 12824,
+      "mimeType": "image/png"
+    },
+    "organelle_golgi": {
+      "key": "organelle_golgi",
+      "filename": "organelle_golgi.png",
+      "url": "/assets/organelle_golgi.png",
+      "updatedAt": "2026-09-17T13:23:56.527Z",
+      "size": 22642,
+      "mimeType": "image/png"
+    },
+    "organelle_lysosome": {
+      "key": "organelle_lysosome",
+      "filename": "organelle_lysosome.png",
+      "url": "/assets/organelle_lysosome.png",
+      "updatedAt": "2026-09-17T12:54:14.158Z",
+      "size": 13055,
+      "mimeType": "image/png"
+    },
+    "organelle_ribosome": {
+      "key": "organelle_ribosome",
+      "filename": "organelle_ribosome.png",
+      "url": "/assets/organelle_ribosome.png",
+      "updatedAt": "2026-09-17T12:54:14.158Z",
+      "size": 15157,
+      "mimeType": "image/png"
+    },
+    "organelle_membrane": {
+      "key": "organelle_membrane",
+      "filename": "organelle_membrane.png",
+      "url": "/assets/organelle_membrane.png",
+      "updatedAt": "2026-09-17T13:23:56.527Z",
+      "size": 21575,
+      "mimeType": "image/png"
+    },
+    "organelle_vacuole": {
+      "key": "organelle_vacuole",
+      "filename": "organelle_vacuole.png",
+      "url": "/assets/organelle_vacuole.png",
+      "updatedAt": "2026-09-17T12:54:14.158Z",
+      "size": 15272,
+      "mimeType": "image/png"
+    },
+    "__MEDIA__organelle_nucleus.png": {
+      "key": "__MEDIA__organelle_nucleus.png",
+      "filename": "organelle_nucleus.png",
+      "url": "/assets/organelle_nucleus.png",
+      "updatedAt": "2026-09-17T13:23:56.527Z",
+      "size": 31105,
+      "mimeType": "image/png"
+    },
+    "__MEDIA__organelle_golgi.png": {
+      "key": "__MEDIA__organelle_golgi.png",
+      "filename": "organelle_golgi.png",
+      "url": "/assets/organelle_golgi.png",
+      "updatedAt": "2026-09-17T13:23:56.527Z",
+      "size": 22642,
+      "mimeType": "image/png"
+    },
+    "organelle_endoplasmic": {
+      "key": "organelle_endoplasmic",
+      "filename": "organelle_endoplasmic.png",
+      "url": "/assets/organelle_endoplasmic.png",
+      "updatedAt": "2026-09-17T13:23:56.527Z",
+      "size": 27177,
+      "mimeType": "image/png"
+    },
+    "__MEDIA__organelle_endoplasmic.png": {
+      "key": "__MEDIA__organelle_endoplasmic.png",
+      "filename": "organelle_endoplasmic.png",
+      "url": "/assets/organelle_endoplasmic.png",
+      "updatedAt": "2026-09-17T13:23:56.527Z",
+      "size": 27177,
+      "mimeType": "image/png"
+    },
+    "__MEDIA__organelle_mitochondria.png": {
+      "key": "__MEDIA__organelle_mitochondria.png",
+      "filename": "organelle_mitochondria.png",
+      "url": "/assets/organelle_mitochondria.png",
+      "updatedAt": "2026-09-17T13:23:56.527Z",
+      "size": 23175,
+      "mimeType": "image/png"
+    },
+    "__MEDIA__organelle_membrane.png": {
+      "key": "__MEDIA__organelle_membrane.png",
+      "filename": "organelle_membrane.png",
+      "url": "/assets/organelle_membrane.png",
+      "updatedAt": "2026-09-17T13:23:56.527Z",
+      "size": 21575,
+      "mimeType": "image/png"
+    },
+    "slide_lvl3-s0_video": {
+      "key": "slide_lvl3-s0_video",
+      "filename": "slide_lvl3-s0_video.mp4",
+      "url": "/assets/slide_lvl3-s0_video.mp4",
+      "updatedAt": "2026-09-17T14:48:20.684Z",
+      "size": 6861236,
+      "mimeType": "video/mp4"
+    },
+    "slide_lvl3-s1_image": {
+      "key": "slide_lvl3-s1_image",
+      "filename": "slide_lvl3-s1_image.webp",
+      "url": "/assets/slide_lvl3-s1_image.webp",
+      "updatedAt": "2026-09-18T06:21:14.668Z",
+      "size": 182732,
+      "mimeType": "image/webp"
+    },
+    "slide_lvl4-s0_video": {
+      "key": "slide_lvl4-s0_video",
+      "filename": "slide_lvl4-s0_video.mp4",
+      "url": "/assets/slide_lvl4-s0_video.mp4",
+      "updatedAt": "2026-09-18T06:10:42.393Z",
+      "size": 3145191,
+      "mimeType": "video/mp4"
+    },
+    "asset_043": {
+      "key": "asset_043",
+      "filename": "asset_043.mp4",
+      "url": "/assets/asset_043.mp4",
+      "updatedAt": "2026-09-17T14:58:17.970Z",
+      "size": 3145191,
+      "mimeType": "video/mp4"
+    },
+    "slide_lvl5-s0_video": {
+      "key": "slide_lvl5-s0_video",
+      "filename": "slide_lvl5-s0_video.mp4",
+      "url": "/assets/slide_lvl5-s0_video.mp4",
+      "updatedAt": "2026-09-18T06:11:22.408Z",
+      "size": 4555428,
+      "mimeType": "video/mp4"
+    },
+    "asset_047": {
+      "key": "asset_047",
+      "filename": "asset_047.mp4",
+      "url": "/assets/asset_047.mp4",
+      "updatedAt": "2026-09-17T14:58:44.992Z",
+      "size": 4555428,
+      "mimeType": "video/mp4"
+    },
+    "slide_lvl6-s0_video": {
+      "key": "slide_lvl6-s0_video",
+      "filename": "slide_lvl6-s0_video.mp4",
+      "url": "/assets/slide_lvl6-s0_video.mp4",
+      "updatedAt": "2026-09-18T06:11:56.383Z",
+      "size": 4933584,
+      "mimeType": "video/mp4"
+    },
+    "asset_049": {
+      "key": "asset_049",
+      "filename": "asset_049.mp4",
+      "url": "/assets/asset_049.mp4",
+      "updatedAt": "2026-09-17T14:59:30.832Z",
+      "size": 5224538,
+      "mimeType": "video/mp4"
+    },
+    "slide_lvl7-s0_video": {
+      "key": "slide_lvl7-s0_video",
+      "filename": "slide_lvl7-s0_video.mp4",
+      "url": "/assets/slide_lvl7-s0_video.mp4",
+      "updatedAt": "2026-09-18T06:22:18.557Z",
+      "size": 4933584,
+      "mimeType": "video/mp4"
+    },
+    "asset_061": {
+      "key": "asset_061",
+      "filename": "asset_061.mp4",
+      "url": "/assets/asset_061.mp4",
+      "updatedAt": "2026-09-17T15:07:10.869Z",
+      "size": 4933584,
+      "mimeType": "video/mp4"
+    },
+    "slide_lvl8-s0_image": {
+      "key": "slide_lvl8-s0_image",
+      "filename": "slide_lvl8-s0_image.webp",
+      "url": "/assets/slide_lvl8-s0_image.webp",
+      "updatedAt": "2026-09-18T06:22:36.474Z",
+      "size": 131838,
+      "mimeType": "image/webp"
+    },
+    "asset_063.png": {
+      "key": "asset_063.png",
+      "filename": "asset_063.png",
+      "url": "/assets/asset_063.png",
+      "updatedAt": "2026-09-18T06:22:38.870Z",
+      "size": 135642,
+      "mimeType": "image/webp"
+    },
+    "asset_002.png": {
+      "key": "asset_002.png",
+      "filename": "asset_002.png",
+      "url": "/assets/asset_002.png",
+      "updatedAt": "2026-09-18T06:07:04.486Z",
+      "size": 516143,
+      "mimeType": "image/jpeg"
+    },
+    "asset_002.webp": {
+      "key": "asset_002.webp",
+      "filename": "asset_002.png",
+      "url": "/assets/asset_002.png",
+      "updatedAt": "2026-09-17T19:31:08.491Z",
+      "size": 559292,
+      "mimeType": "image/png"
+    },
+    "asset_001": {
+      "key": "asset_001",
+      "filename": "asset_001.mp4",
+      "url": "/assets/asset_001.mp4",
+      "updatedAt": "2026-09-17T19:31:08.491Z",
+      "size": 2512822,
+      "mimeType": "video/mp4"
+    },
+    "asset_001.mp4": {
+      "key": "asset_001.mp4",
+      "filename": "asset_001.mp4",
+      "url": "/assets/asset_001.mp4",
+      "updatedAt": "2026-09-17T19:31:08.491Z",
+      "size": 2512822,
+      "mimeType": "video/mp4"
+    },
+    "intro_welcome.mp4": {
+      "key": "intro_welcome.mp4",
+      "filename": "intro_welcome.mp4",
+      "url": "/assets/intro_welcome.mp4",
+      "updatedAt": "2026-09-17T19:31:08.491Z",
+      "size": 2512822,
+      "mimeType": "video/mp4"
+    },
+    "intro_welcome": {
+      "key": "intro_welcome",
+      "filename": "intro_welcome.mp4",
+      "url": "/assets/intro_welcome.mp4",
+      "updatedAt": "2026-09-17T19:31:08.491Z",
+      "size": 2512822,
+      "mimeType": "video/mp4"
+    },
+    "asset_028": {
+      "key": "asset_028.jpeg",
+      "filename": "asset_028.jpeg",
+      "url": "/assets/asset_028.jpeg",
+      "updatedAt": "2026-09-18T06:20:35.879Z",
+      "size": 123426,
+      "mimeType": "image/webp"
+    },
+    "asset_063": {
+      "key": "asset_063",
+      "filename": "asset_063.jpg",
+      "url": "/assets/asset_063.jpg",
+      "updatedAt": "2026-09-18T06:22:38.866Z",
+      "size": 2561005,
+      "mimeType": "image/jpeg"
+    },
+    "landing_page_video": {
+      "key": "landing_page_video",
+      "filename": "landing_page_video.mp4",
+      "url": "/assets/landing_page_video.mp4",
+      "updatedAt": "2026-09-18T06:50:24.280Z",
+      "size": 2739210,
+      "mimeType": "video/mp4"
+    },
+    "landing_page_video.mp4": {
+      "key": "landing_page_video",
+      "filename": "landing_page_video.mp4",
+      "url": "/assets/landing_page_video.mp4",
+      "updatedAt": "2026-09-18T06:50:00.077Z",
+      "size": 1113239,
+      "mimeType": "video/mp4"
+    }
+  }
+}

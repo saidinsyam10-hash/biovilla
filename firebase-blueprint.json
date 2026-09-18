@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Akun pengguna aplikasi BioVillage (guru atau siswa)",
+      "type": "object",
+      "properties": {
+        "username": { "type": "string" },
+        "role": { "type": "string", "enum": ["guru", "siswa"] },
+        "fullName": { "type": "string" },
+        "nama": { "type": "string" },
+        "className": { "type": "string" },
+        "avatar": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "lastActive": { "type": "string" }
+      },
+      "required": ["username", "role"]
+    },
+    "Student": {
+      "title": "Student",
+      "description": "Profil dan ringkasan nilai siswa",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "fullName": { "type": "string" },
+        "nama": { "type": "string" },
+        "className": { "type": "string" },
+        "clearedStagesCount": { "type": "number" },
+        "totalStages": { "type": "number" },
+        "totalStars": { "type": "number" },
+        "poin": { "type": "number" },
+        "lastActive": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["username"]
+    },
+    "LevelProgress": {
+      "title": "LevelProgress",
+      "description": "Hasil penilaian dan status pengerjaan level oleh siswa",
+      "type": "object",
+      "properties": {
+        "skor": { "type": "number" },
+        "skor_maksimal": { "type": "number" },
+        "persentase": { "type": "number" },
+        "status": { "type": "string", "enum": ["lulus", "belum_lulus", "selesai"] },
+        "waktu_selesai": { "type": "string" },
+        "esai": { "type": "string" },
+        "jalur_diambil": { "type": "string" }
+      },
+      "required": ["skor", "skor_maksimal", "persentase", "status", "waktu_selesai"]
+    },
+    "NilaiAkhir": {
+      "title": "NilaiAkhir",
+      "description": "Kompilasi nilai akhir dan predikat siswa setelah menyelesaikan tantangan",
+      "type": "object",
+      "properties": {
+        "total_skor": { "type": "number" },
+        "total_skor_maksimal": { "type": "number" },
+        "persentase_akhir": { "type": "number" },
+        "predikat": { "type": "string" },
+        "waktu_penilaian": { "type": "string" }
+      },
+      "required": ["total_skor", "total_skor_maksimal", "persentase_akhir", "predikat"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Data akun pengguna (guru dan siswa)"
+    },
+    "/students/{studentId}": {
+      "schema": "Student",
+      "description": "Data profil siswa"
+    },
+    "/students/{studentId}/progres/{levelId}": {
+      "schema": "LevelProgress",
+      "description": "Sub-koleksi progres pengerjaan dan skor per level untuk tiap siswa"
+    },
+    "/students/{studentId}/nilai_akhir/{docId}": {
+      "schema": "NilaiAkhir",
+      "description": "Dokumen nilai akhir dan predikat siswa"
+    }
+  }
+}

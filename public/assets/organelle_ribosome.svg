@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadowBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" />
+    </filter>
+    <filter id="cardShadowBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" />
+    </filter>
+    <filter id="glowBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" />
+    </filter>
+
+    <linearGradient id="cardInnerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="70%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+
+    <!-- Gradients -->
+    <radialGradient id="nucleusGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="35%" stop-color="#7e22ce" />
+      <stop offset="75%" stop-color="#581c87" />
+      <stop offset="100%" stop-color="#3b0764" />
+    </radialGradient>
+    <radialGradient id="coreGrad" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#7e22ce" />
+      <stop offset="60%" stop-color="#4c1d95" />
+      <stop offset="100%" stop-color="#2e1065" />
+    </radialGradient>
+    <radialGradient id="nucleolusGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="45%" stop-color="#6b21a8" />
+      <stop offset="100%" stop-color="#3b0764" />
+    </radialGradient>
+
+    <linearGradient id="mitoOuterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c" />
+      <stop offset="30%" stop-color="#ea580c" />
+      <stop offset="85%" stop-color="#c2410c" />
+      <stop offset="100%" stop-color="#7c2d12" />
+    </linearGradient>
+    <linearGradient id="mitoInnerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ea580c" />
+      <stop offset="40%" stop-color="#c2410c" />
+      <stop offset="100%" stop-color="#9a3412" />
+    </linearGradient>
+
+    <linearGradient id="chloroOuterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80" />
+      <stop offset="35%" stop-color="#22c55e" />
+      <stop offset="80%" stop-color="#15803d" />
+      <stop offset="100%" stop-color="#14532d" />
+    </linearGradient>
+    <radialGradient id="chloroInnerGrad" cx="40%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#22c55e" />
+      <stop offset="60%" stop-color="#15803d" />
+      <stop offset="100%" stop-color="#14532d" />
+    </radialGradient>
+
+    <linearGradient id="golgiGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="golgiGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7dd3fc" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </linearGradient>
+    <linearGradient id="golgiGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="golgiGrad4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e0f2fe" />
+      <stop offset="100%" stop-color="#7dd3fc" />
+    </linearGradient>
+    <radialGradient id="vesicleGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#e0f2fe" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </radialGradient>
+
+    <radialGradient id="lysoGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="35%" stop-color="#facc15" />
+      <stop offset="75%" stop-color="#eab308" />
+      <stop offset="100%" stop-color="#a16207" />
+    </radialGradient>
+
+    <radialGradient id="riboGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#e9d5ff" />
+      <stop offset="40%" stop-color="#a855f7" />
+      <stop offset="85%" stop-color="#7e22ce" />
+      <stop offset="100%" stop-color="#4c1d95" />
+    </radialGradient>
+    <radialGradient id="riboGradLight" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#f3e8ff" />
+      <stop offset="45%" stop-color="#c084fc" />
+      <stop offset="90%" stop-color="#9333ea" />
+      <stop offset="100%" stop-color="#581c87" />
+    </radialGradient>
+    <radialGradient id="riboGradDark" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="50%" stop-color="#7e22ce" />
+      <stop offset="100%" stop-color="#3b0764" />
+    </radialGradient>
+
+    <radialGradient id="membraneInnerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#bae6fd" />
+      <stop offset="70%" stop-color="#7dd3fc" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </radialGradient>
+
+    <radialGradient id="vacuoleBodyGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#e0f2fe" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#7dd3fc" stop-opacity="0.75" />
+      <stop offset="80%" stop-color="#0284c7" stop-opacity="0.65" />
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0.85" />
+    </radialGradient>
+    <linearGradient id="vacuoleWaterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+  </defs>
+
+  <rect width="200" height="200" rx="24" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.8" />
+  <rect x="2" y="2" width="196" height="196" rx="22" fill="url(#cardInnerGrad)" />
+  <g transform="translate(30, 28)">
+    
+        <!-- Shadow -->
+        <ellipse cx="70" cy="118" rx="46" ry="14" fill="#0f172a" opacity="0.14" filter="url(#shadowBlur)" />
+
+        <!-- Cluster of Lavender-Purple 3D Spheres (Subunits) -->
+        <g stroke="#6b21a8" stroke-width="1.5">
+          <!-- Back layer dots -->
+          <circle cx="46" cy="62" r="12" fill="url(#riboGradDark)" />
+          <circle cx="92" cy="60" r="13" fill="url(#riboGradDark)" />
+          <circle cx="58" cy="90" r="11" fill="url(#riboGradDark)" />
+          <circle cx="88" cy="88" r="12" fill="url(#riboGradDark)" />
+
+          <!-- Center Large Ribosomal Subunit (50S/60S) -->
+          <circle cx="64" cy="58" r="18" fill="url(#riboGrad)" />
+          <circle cx="80" cy="72" r="16" fill="url(#riboGrad)" />
+
+          <!-- Small Ribosomal Subunit (30S/40S) -->
+          <circle cx="54" cy="76" r="14" fill="url(#riboGradLight)" />
+          <circle cx="72" cy="90" r="13" fill="url(#riboGradLight)" />
+
+          <!-- Surrounding active micro-dots -->
+          <circle cx="40" cy="84" r="6.5" fill="url(#riboGradLight)" />
+          <circle cx="102" cy="74" r="7" fill="url(#riboGradLight)" />
+          <circle cx="68" cy="42" r="7.5" fill="url(#riboGradLight)" />
+          <circle cx="88" cy="46" r="6" fill="url(#riboGradLight)" />
+        </g>
+
+        <!-- Specular shine on each dot -->
+        <circle cx="60" cy="52" r="4" fill="#ffffff" opacity="0.7" />
+        <circle cx="76" cy="66" r="3.5" fill="#ffffff" opacity="0.7" />
+        <circle cx="51" cy="72" r="3" fill="#ffffff" opacity="0.65" />
+        <circle cx="70" cy="85" r="3" fill="#ffffff" opacity="0.65" />
+        <circle cx="44" cy="58" r="2" fill="#ffffff" opacity="0.6" />
+        <circle cx="90" cy="56" r="2.5" fill="#ffffff" opacity="0.6" />
+      
+  </g>
+</svg>

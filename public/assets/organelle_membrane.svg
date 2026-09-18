@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  
+  <defs>
+    <!-- Card Frame Shadows & Blurs -->
+    <filter id="cardDropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+    <filter id="organelleGroundShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" />
+    </filter>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" />
+    </filter>
+
+    <!-- NUKLEUS GRADIENTS (Ungu Gelap ke Ungu Muda) -->
+    <radialGradient id="nucEnvelopeGrad" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="25%" stop-color="#9333ea" />
+      <stop offset="60%" stop-color="#6b21a8" />
+      <stop offset="90%" stop-color="#4c1d95" />
+      <stop offset="100%" stop-color="#2e1065" />
+    </radialGradient>
+    <radialGradient id="nucNucleoplasmGrad" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#7e22ce" />
+      <stop offset="50%" stop-color="#581c87" />
+      <stop offset="100%" stop-color="#3b0764" />
+    </radialGradient>
+    <radialGradient id="nucNucleolusGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="40%" stop-color="#581c87" />
+      <stop offset="85%" stop-color="#3b0764" />
+      <stop offset="100%" stop-color="#1e0538" />
+    </radialGradient>
+    <linearGradient id="nucPoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d8b4fe" />
+      <stop offset="100%" stop-color="#3b0764" />
+    </linearGradient>
+
+    <!-- BADAN GOLGI GRADIENTS (Oranye ke Kuning) -->
+    <linearGradient id="golgiCisternae1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="30%" stop-color="#facc15" />
+      <stop offset="70%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#9a3412" />
+    </linearGradient>
+    <linearGradient id="golgiCisternae2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fde047" />
+      <stop offset="35%" stop-color="#fb923c" />
+      <stop offset="75%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#7c2d12" />
+    </linearGradient>
+    <radialGradient id="golgiVesicleGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="40%" stop-color="#f59e0b" />
+      <stop offset="80%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#9a3412" />
+    </radialGradient>
+
+    <!-- RETIKULUM ENDOPLASMA GRADIENTS (Biru Muda ke Biru Tua) -->
+    <linearGradient id="erSheetGrad1" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd" />
+      <stop offset="25%" stop-color="#38bdf8" />
+      <stop offset="65%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0c4a6e" />
+    </linearGradient>
+    <linearGradient id="erSheetGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7dd3fc" />
+      <stop offset="35%" stop-color="#0ea5e9" />
+      <stop offset="75%" stop-color="#0369a1" />
+      <stop offset="100%" stop-color="#082f49" />
+    </linearGradient>
+    <radialGradient id="ribosomeGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#e0f2fe" />
+      <stop offset="40%" stop-color="#38bdf8" />
+      <stop offset="90%" stop-color="#0369a1" />
+      <stop offset="100%" stop-color="#082f49" />
+    </radialGradient>
+
+    <!-- MITOKONDRIA GRADIENTS (Merah-Oranye) -->
+    <linearGradient id="mitoOuterGrad" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#f87171" />
+      <stop offset="30%" stop-color="#ef4444" />
+      <stop offset="65%" stop-color="#dc2626" />
+      <stop offset="90%" stop-color="#991b1b" />
+      <stop offset="100%" stop-color="#450a0a" />
+    </linearGradient>
+    <radialGradient id="mitoMatrixGrad" cx="40%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#ea580c" />
+      <stop offset="50%" stop-color="#c2410c" />
+      <stop offset="90%" stop-color="#7c2d12" />
+      <stop offset="100%" stop-color="#431407" />
+    </radialGradient>
+    <linearGradient id="cristaeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="35%" stop-color="#f97316" />
+      <stop offset="75%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#9a3412" />
+    </linearGradient>
+
+    <!-- MEMBRAN SEL GRADIENTS (Hijau Muda Transparan) -->
+    <radialGradient id="lipidHeadGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#dcfce7" />
+      <stop offset="35%" stop-color="#86efac" />
+      <stop offset="70%" stop-color="#22c55e" />
+      <stop offset="100%" stop-color="#15803d" />
+    </radialGradient>
+    <linearGradient id="tailGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80" />
+      <stop offset="50%" stop-color="#22c55e" />
+      <stop offset="100%" stop-color="#166534" />
+    </linearGradient>
+    <linearGradient id="proteinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#86efac" />
+      <stop offset="30%" stop-color="#3b82f6" />
+      <stop offset="70%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1e40af" />
+    </linearGradient>
+    <radialGradient id="proteinPoreGrad" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="60%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#172554" />
+    </radialGradient>
+  </defs>
+
+
+  <!-- White Rounded Square Card Base Frame (Clean White Background) -->
+  <rect x="2" y="2" width="236" height="236" rx="28" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" />
+
+  <!-- Organelle Artwork (No Text, No Numbers) -->
+  
+    <!-- Soft Ground Shadow for 3D depth -->
+    <ellipse cx="120" cy="185" rx="75" ry="18" fill="#0f172a" opacity="0.10" filter="url(#organelleGroundShadow)" />
+
+    <g>
+      <!-- Translucent Fluid Cytoplasm Background (Warna hijau muda transparan) -->
+      <rect x="22" y="67" width="196" height="96" rx="20" fill="#dcfce7" opacity="0.45" stroke="#86efac" stroke-width="1.5" stroke-dasharray="4 3" />
+
+      <!-- Phospholipid Bilayer Structure (Dua Baris Molekul dengan Kepala Bulat & Ekor Bergelombang) -->
+
+      <!-- TOP ROW: Phospholipid Heads & Tails pointing DOWNWARD -->
+      
+        <!-- Dual wavy hydrophobic tails -->
+        <path d="M 32 89 Q 29 101, 33 113" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 38 89 Q 41 101, 37 113" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <!-- Hydrophilic Phosphate Head (Kepala Bulat) -->
+        <circle cx="35" cy="83" r="7.5" fill="url(#lipidHeadGrad)" stroke="#15803d" stroke-width="1.5" />
+        <circle cx="32.5" cy="80.5" r="2" fill="#ffffff" opacity="0.7" />
+      
+        <!-- Dual wavy hydrophobic tails -->
+        <path d="M 49 89 Q 46 101, 50 113" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 55 89 Q 58 101, 54 113" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <!-- Hydrophilic Phosphate Head (Kepala Bulat) -->
+        <circle cx="52" cy="83" r="7.5" fill="url(#lipidHeadGrad)" stroke="#15803d" stroke-width="1.5" />
+        <circle cx="49.5" cy="80.5" r="2" fill="#ffffff" opacity="0.7" />
+      
+        <!-- Dual wavy hydrophobic tails -->
+        <path d="M 66 89 Q 63 101, 67 113" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 72 89 Q 75 101, 71 113" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <!-- Hydrophilic Phosphate Head (Kepala Bulat) -->
+        <circle cx="69" cy="83" r="7.5" fill="url(#lipidHeadGrad)" stroke="#15803d" stroke-width="1.5" />
+        <circle cx="66.5" cy="80.5" r="2" fill="#ffffff" opacity="0.7" />
+      
+        <!-- Dual wavy hydrophobic tails -->
+        <path d="M 139 89 Q 136 101, 140 113" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 145 89 Q 148 101, 144 113" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <!-- Hydrophilic Phosphate Head (Kepala Bulat) -->
+        <circle cx="142" cy="83" r="7.5" fill="url(#lipidHeadGrad)" stroke="#15803d" stroke-width="1.5" />
+        <circle cx="139.5" cy="80.5" r="2" fill="#ffffff" opacity="0.7" />
+      
+        <!-- Dual wavy hydrophobic tails -->
+        <path d="M 156 89 Q 153 101, 157 113" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 162 89 Q 165 101, 161 113" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <!-- Hydrophilic Phosphate Head (Kepala Bulat) -->
+        <circle cx="159" cy="83" r="7.5" fill="url(#lipidHeadGrad)" stroke="#15803d" stroke-width="1.5" />
+        <circle cx="156.5" cy="80.5" r="2" fill="#ffffff" opacity="0.7" />
+      
+        <!-- Dual wavy hydrophobic tails -->
+        <path d="M 173 89 Q 170 101, 174 113" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 179 89 Q 182 101, 178 113" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <!-- Hydrophilic Phosphate Head (Kepala Bulat) -->
+        <circle cx="176" cy="83" r="7.5" fill="url(#lipidHeadGrad)" stroke="#15803d" stroke-width="1.5" />
+        <circle cx="173.5" cy="80.5" r="2" fill="#ffffff" opacity="0.7" />
+      
+        <!-- Dual wavy hydrophobic tails -->
+        <path d="M 190 89 Q 187 101, 191 113" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 196 89 Q 199 101, 195 113" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <!-- Hydrophilic Phosphate Head (Kepala Bulat) -->
+        <circle cx="193" cy="83" r="7.5" fill="url(#lipidHeadGrad)" stroke="#15803d" stroke-width="1.5" />
+        <circle cx="190.5" cy="80.5" r="2" fill="#ffffff" opacity="0.7" />
+      
+
+      <!-- BOTTOM ROW: Phospholipid Heads & Tails pointing UPWARD -->
+      
+        <!-- Dual wavy hydrophobic tails -->
+        <path d="M 32 141 Q 29 129, 33 117" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 38 141 Q 41 129, 37 117" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <!-- Hydrophilic Phosphate Head (Kepala Bulat) -->
+        <circle cx="35" cy="147" r="7.5" fill="url(#lipidHeadGrad)" stroke="#15803d" stroke-width="1.5" />
+        <circle cx="32.5" cy="144.5" r="2" fill="#ffffff" opacity="0.7" />
+      
+        <!-- Dual wavy hydrophobic tails -->
+        <path d="M 49 141 Q 46 129, 50 117" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 55 141 Q 58 129, 54 117" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <!-- Hydrophilic Phosphate Head (Kepala Bulat) -->
+        <circle cx="52" cy="147" r="7.5" fill="url(#lipidHeadGrad)" stroke="#15803d" stroke-width="1.5" />
+        <circle cx="49.5" cy="144.5" r="2" fill="#ffffff" opacity="0.7" />
+      
+        <!-- Dual wavy hydrophobic tails -->
+        <path d="M 66 141 Q 63 129, 67 117" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 72 141 Q 75 129, 71 117" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <!-- Hydrophilic Phosphate Head (Kepala Bulat) -->
+        <circle cx="69" cy="147" r="7.5" fill="url(#lipidHeadGrad)" stroke="#15803d" stroke-width="1.5" />
+        <circle cx="66.5" cy="144.5" r="2" fill="#ffffff" opacity="0.7" />
+      
+        <!-- Dual wavy hydrophobic tails -->
+        <path d="M 139 141 Q 136 129, 140 117" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 145 141 Q 148 129, 144 117" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <!-- Hydrophilic Phosphate Head (Kepala Bulat) -->
+        <circle cx="142" cy="147" r="7.5" fill="url(#lipidHeadGrad)" stroke="#15803d" stroke-width="1.5" />
+        <circle cx="139.5" cy="144.5" r="2" fill="#ffffff" opacity="0.7" />
+      
+        <!-- Dual wavy hydrophobic tails -->
+        <path d="M 156 141 Q 153 129, 157 117" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 162 141 Q 165 129, 161 117" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <!-- Hydrophilic Phosphate Head (Kepala Bulat) -->
+        <circle cx="159" cy="147" r="7.5" fill="url(#lipidHeadGrad)" stroke="#15803d" stroke-width="1.5" />
+        <circle cx="156.5" cy="144.5" r="2" fill="#ffffff" opacity="0.7" />
+      
+        <!-- Dual wavy hydrophobic tails -->
+        <path d="M 173 141 Q 170 129, 174 117" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 179 141 Q 182 129, 178 117" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <!-- Hydrophilic Phosphate Head (Kepala Bulat) -->
+        <circle cx="176" cy="147" r="7.5" fill="url(#lipidHeadGrad)" stroke="#15803d" stroke-width="1.5" />
+        <circle cx="173.5" cy="144.5" r="2" fill="#ffffff" opacity="0.7" />
+      
+        <!-- Dual wavy hydrophobic tails -->
+        <path d="M 190 141 Q 187 129, 191 117" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 196 141 Q 199 129, 195 117" fill="none" stroke="url(#tailGrad)" stroke-width="2" stroke-linecap="round" />
+        <!-- Hydrophilic Phosphate Head (Kepala Bulat) -->
+        <circle cx="193" cy="147" r="7.5" fill="url(#lipidHeadGrad)" stroke="#15803d" stroke-width="1.5" />
+        <circle cx="190.5" cy="144.5" r="2" fill="#ffffff" opacity="0.7" />
+      
+
+      <!-- INTEGRAL TRANSMEMBRANE PROTEIN CHANNEL (Protein Transmembran Tertanam di Antara Lapisan) -->
+      <!-- Left Subunit of Channel -->
+      <path d="M 92 73 
+               C 84 90, 82 140, 94 157
+               C 106 157, 110 140, 108 115
+               C 110 90, 106 73, 92 73 Z" 
+            fill="url(#proteinGrad)" stroke="#1e3a8a" stroke-width="2" />
+
+      <!-- Right Subunit of Channel -->
+      <path d="M 148 73 
+               C 156 90, 158 140, 146 157
+               C 134 157, 130 140, 132 115
+               C 130 90, 134 73, 148 73 Z" 
+            fill="url(#proteinGrad)" stroke="#1e3a8a" stroke-width="2" />
+
+      <!-- Central Pore Tunnel Through Membrane (Kanal Porus) -->
+      <ellipse cx="120" cy="77" rx="12" ry="5.5" fill="url(#proteinPoreGrad)" stroke="#1e40af" stroke-width="1.5" />
+      <ellipse cx="120" cy="153" rx="12" ry="5.5" fill="url(#proteinPoreGrad)" stroke="#1e40af" stroke-width="1.5" />
+
+      <!-- Peripheral Carbohydrate Glycoprotein Antenna (Rantai Glikoprotein) -->
+      <path d="M 98 73 Q 90 60, 96 51" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" />
+      <circle cx="96" cy="51" r="4" fill="#86efac" stroke="#15803d" stroke-width="1.2" />
+      <circle cx="90" cy="60" r="3.5" fill="#4ade80" stroke="#15803d" stroke-width="1.2" />
+
+      <!-- Glossy 3D Highlight Reflections on Protein and Lipid heads -->
+      <path d="M 92 79 C 87 95, 86 125, 94 147" 
+            fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.6" />
+      <path d="M 148 79 C 153 95, 154 125, 146 147" 
+            fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.5" />
+    </g>
+  
+</svg>

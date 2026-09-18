@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // User accounts (guru & siswa)
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+
+    // Student profile documents
+    match /students/{studentId} {
+      allow read, write: if true;
+
+      // Subcollection: Progres per level
+      match /progres/{levelId} {
+        allow read, write: if true;
+      }
+
+      // Subcollection: Nilai akhir dan predikat
+      match /nilai_akhir/{docId} {
+        allow read, write: if true;
+      }
+    }
+  }
+}

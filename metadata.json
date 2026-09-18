@@ -1,0 +1,8 @@
+{
+  "name": "Remix BioVillage Simulator",
+  "description": "Misi Petualangan Desa Sel - Game edukasi biologi sel berbasis peta interaktif dengan analogi organel sel dan fasilitas desa.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
