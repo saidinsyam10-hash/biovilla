@@ -180,40 +180,44 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               <span>Intro Misi Petualangan</span>
             </div>
 
-            {/* Tombol cepat ganti video pada overlay sudut kanan atas video player */}
-            <button
-              type="button"
-              onClick={() => {
-                sfx.playClick();
-                setShowVideoManager(true);
-              }}
-              className="absolute top-2.5 right-2.5 bg-slate-950/85 hover:bg-amber-400 hover:text-slate-950 text-amber-300 backdrop-blur-md px-2.5 py-1 rounded-lg border border-amber-400/40 flex items-center gap-1.5 text-[11px] font-bold shadow-lg transition-all cursor-pointer active:scale-95"
-              title="Unggah berkas video baru khusus untuk Landing Page"
-            >
-              <Upload className="w-3.5 h-3.5" />
-              <span>Ganti Video</span>
-            </button>
+            {/* Tombol cepat ganti video pada overlay sudut kanan atas video player (Khusus Guru) */}
+            {isTeacher && (
+              <button
+                type="button"
+                onClick={() => {
+                  sfx.playClick();
+                  setShowVideoManager(true);
+                }}
+                className="absolute top-2.5 right-2.5 bg-slate-950/85 hover:bg-amber-400 hover:text-slate-950 text-amber-300 backdrop-blur-md px-2.5 py-1 rounded-lg border border-amber-400/40 flex items-center gap-1.5 text-[11px] font-bold shadow-lg transition-all cursor-pointer active:scale-95"
+                title="Unggah berkas video baru khusus untuk Landing Page (Khusus Guru)"
+              >
+                <Upload className="w-3.5 h-3.5" />
+                <span>Ganti Video</span>
+              </button>
+            )}
           </div>
 
-          {/* Tombol Unggah Video Khusus Landing Page */}
-          <div className="mt-3 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-center">
-            <button
-              type="button"
-              onClick={() => {
-                sfx.playClick();
-                setShowVideoManager(true);
-              }}
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-400 hover:from-amber-300 hover:to-amber-200 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-950/30 flex items-center gap-2 cursor-pointer transition-all active:scale-95 border border-amber-300/40"
-              title="Unggah berkas video MP4/WebM atau tautan video khusus untuk landing page"
-            >
-              <Upload className="w-4 h-4 text-emerald-950" />
-              <span>Unggah / Ganti Video Landing Page</span>
-            </button>
-            <span className="text-[11px] text-emerald-300/80 flex items-center gap-1">
-              <span>🛡️</span>
-              <span>Terisolasi &bull; Tidak mempengaruhi level game</span>
-            </span>
-          </div>
+          {/* Tombol Unggah Video Khusus Landing Page (Khusus Guru) */}
+          {isTeacher && (
+            <div className="mt-3 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-center">
+              <button
+                type="button"
+                onClick={() => {
+                  sfx.playClick();
+                  setShowVideoManager(true);
+                }}
+                className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-400 hover:from-amber-300 hover:to-amber-200 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-950/30 flex items-center gap-2 cursor-pointer transition-all active:scale-95 border border-amber-300/40"
+                title="Unggah berkas video MP4/WebM atau tautan video khusus untuk landing page"
+              >
+                <Upload className="w-4 h-4 text-emerald-950" />
+                <span>Unggah / Ganti Video Landing Page</span>
+              </button>
+              <span className="text-[11px] text-emerald-300/80 flex items-center gap-1">
+                <span>🛡️</span>
+                <span>Terisolasi &bull; Tidak mempengaruhi level game</span>
+              </span>
+            </div>
+          )}
         </section>
 
         {/* 2. Di Bawah Video: Teks Konten & Analogi */}

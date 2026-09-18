@@ -68,7 +68,7 @@ export async function buildStudentSheetRow(studentId: string, studentName?: stri
   const l8 = progres.level8;
 
   const totalSkor = nilaiAkhir?.total_skor ?? 0;
-  const totalMax = nilaiAkhir?.total_skor_maksimal ?? 44;
+  const totalMax = nilaiAkhir?.total_skor_maksimal ?? 150;
   const persenAkhir = nilaiAkhir?.persentase_akhir ?? 0;
   const predikat = hitungPredikatDesaSel(persenAkhir);
 
@@ -91,9 +91,9 @@ export async function buildStudentSheetRow(studentId: string, studentName?: stri
     level3Persen: l3?.persentase ?? 0,
     level4Skor: `${l4?.skor ?? 0} / ${l4?.skor_maksimal ?? 7}`,
     level4Persen: l4?.persentase ?? 0,
-    level5Skor: `${l5?.skor ?? 0} / ${l5?.skor_maksimal ?? 5}`,
+    level5Skor: `${l5?.skor ?? 0} / ${l5?.skor_maksimal ?? 8}`,
     level5Persen: l5?.persentase ?? 0,
-    level6Skor: `${l6?.skor ?? 0} / ${l6?.skor_maksimal ?? 5}`,
+    level6Skor: `${l6?.skor ?? 0} / ${l6?.skor_maksimal ?? 8}`,
     level6Persen: l6?.persentase ?? 0,
     level7Skor: `${l7?.skor ?? 0} / 100`,
     level7Jalur: l7?.jalur_diambil ? l7.jalur_diambil.replace(/_/g, ' ') : 'Penyelamatan Berhasil',

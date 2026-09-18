@@ -263,21 +263,10 @@ function deleteOldMediaFilesForSlot(key: string, keepFilename?: string) {
       }
     }
 
-    for (const f of filesToDelete) {
-      if (keepFilename && f.toLowerCase() === keepFilename.toLowerCase()) continue;
-      if (PROTECTED_CORE_ASSETS.has(f.toLowerCase())) continue;
-      for (const dir of checkDirs) {
-        const filePath = path.join(dir, f);
-        if (fs.existsSync(filePath)) {
-          try { fs.unlinkSync(filePath); } catch {}
-        }
-      }
-      for (const [mKey, mItem] of Object.entries(manifest.items)) {
-        if (mItem?.filename === f) {
-          delete manifest.items[mKey];
-        }
-      }
-    }
+    // PENYIMPANAN PERMANEN: Berkas fisik di disk TIDAK PERNAH dihapus (no unlink)
+    // Semua aset yang diunggah akan tetap tersimpan permanen di folder public/assets dan public/uploads
+    // sehingga selalu aman dan tidak akan hilang saat di-push atau dihubungkan ke GitHub.
+    // (Logika penghapusan fisik sengaja dinonaktifkan untuk menjamin keamanan aset)
 
     saveManifest(manifest);
   } catch (err) {
@@ -588,6 +577,32 @@ export function createExpressApp() {
     } catch (err: any) {
       console.error('Failed to persist media:', err);
       res.status(500).json({ success: false, error: err?.message || 'Server write error' });
+    }
+  });
+
+  // Simpan tautan URL eksternal (misal Google Drive, YouTube, CDN) ke manifest server secara permanen
+  apiRouter.post('/media/custom-url', (req, res) => {
+    try {
+      const { key, url } = req.body;
+      if (!key || !url) {
+        return res.status(400).json({ success: false, error: 'Key dan url wajib disertakan' });
+      }
+      const manifest = getManifest();
+      const cleanKey = key.replace(/^__MEDIA__/, '').trim();
+      const baseKey = cleanKey.replace(/\.[a-zA-Z0-9]+$/, '');
+      const item: ManifestItem = {
+        key: cleanKey,
+        filename: '',
+        url: url.trim(),
+        updatedAt: new Date().toISOString()
+      };
+      manifest.items[key] = item;
+      manifest.items[cleanKey] = item;
+      if (baseKey) manifest.items[baseKey] = item;
+      saveManifest(manifest);
+      res.json({ success: true, item });
+    } catch (err: any) {
+      res.status(500).json({ success: false, error: err?.message || 'Gagal menyimpan URL ke server' });
     }
   });
 

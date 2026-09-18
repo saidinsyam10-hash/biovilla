@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Hotspot } from '../types';
 import { resolveMediaPath, sfx } from '../utils/audio';
 import { AudioPlayer } from './AudioPlayer';
-import { getMediaObjectURL, getMediaResolvedURL, saveMediaBlob, getAssetCandidates, onMediaUpdated } from '../utils/mediaStore';
+import { getMediaObjectURL, getMediaResolvedURL, saveMediaBlob, getAssetCandidates, onMediaUpdated, uploadMediaFileServer } from '../utils/mediaStore';
 import { HotspotIllustration } from './HotspotIllustration';
 import { HotspotPhotoUploader } from './HotspotPhotoUploader';
 import { ChecklistPhotoManagerModal } from './ChecklistPhotoManagerModal';
@@ -334,6 +334,11 @@ export const HotspotViewer: React.FC<HotspotViewerProps> = ({
     if (baseName !== cleanKey) {
       await saveMediaBlob(baseName, file);
     }
+    try {
+      await uploadMediaFileServer(cleanKey, file);
+    } catch (uploadErr) {
+      console.warn('[HotspotViewer] Server upload note:', uploadErr);
+    }
   };
 
   const handleDrop = async (e: React.DragEvent) => {
@@ -351,6 +356,11 @@ export const HotspotViewer: React.FC<HotspotViewerProps> = ({
       await saveMediaBlob(cleanKey, file);
       if (baseName !== cleanKey) {
         await saveMediaBlob(baseName, file);
+      }
+      try {
+        await uploadMediaFileServer(cleanKey, file);
+      } catch (uploadErr) {
+        console.warn('[HotspotViewer] Server upload note:', uploadErr);
       }
     }
   };
@@ -841,45 +851,17 @@ export const HotspotViewer: React.FC<HotspotViewerProps> = ({
                   </div>
                 </div>
 
-                {/* Compact Image / Illustration - Muncul di setiap ceklis */}
-                <div className="rounded-xl overflow-hidden border-2 border-slate-200 shadow-sm bg-slate-950 h-36 sm:h-44 w-full flex items-center justify-center relative">
+                {/* Hero Image / Illustration - Tampil Jernih, Luas & Nyaman Dilihat */}
+                <div className="rounded-2xl overflow-hidden border-2 border-slate-200 shadow-md bg-slate-950 h-56 sm:h-72 md:h-80 w-full flex items-center justify-center relative">
                   <HotspotIllustration
                     hotspotId={activeHotspot.id}
                     filePath={activeHotspot.contents.find(c => c.type === 'image')?.filePath}
                     title={activeExplanation.title}
                     className="w-full h-full object-contain"
                   />
-                  <div className="absolute top-2 right-2 bg-slate-900/85 backdrop-blur-sm text-amber-300 text-[9px] px-2 py-0.5 rounded-full font-bold border border-amber-300/30">
+                  <div className="absolute top-2.5 right-2.5 bg-slate-900/85 backdrop-blur-sm text-amber-300 text-[10px] px-2.5 py-1 rounded-full font-bold border border-amber-300/40 shadow">
                     {activeExplanation.subtitle}
                   </div>
-                </div>
-
-                {/* Text Display dengan Suara Pembaca */}
-                <div className="bg-amber-50/95 border-2 border-amber-300 rounded-2xl p-3.5 sm:p-4 text-slate-800 shadow-xs relative">
-                  <div className="flex items-center justify-between gap-2 mb-1.5">
-                    <span className="text-[11px] font-black uppercase tracking-wider text-amber-900 flex items-center gap-1.5 font-fredoka">
-                      <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-                      <span>{isPetunjuk ? 'Suara Pembaca Petunjuk:' : 'Suara Penjelasan Organel:'}</span>
-                    </span>
-                    {isSpeaking ? (
-                      <span className="text-[9px] bg-emerald-600 text-white font-bold px-2 py-0.5 rounded-full animate-pulse shadow-xs flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
-                        Dibacakan Narator 🔊
-                      </span>
-                    ) : (
-                      <span className="text-[9px] bg-amber-200/80 text-amber-900 font-bold px-2 py-0.5 rounded-full">
-                        Suara Aktif ✨
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-sm sm:text-base text-amber-950 font-bold leading-relaxed">
-                    "{activeExplanation.spokenNarration}"
-                  </p>
-                  {activeExplanation.description && activeExplanation.description !== activeExplanation.spokenNarration && (
-                    <div className="mt-2 text-xs text-amber-900/85 bg-amber-100/70 p-2.5 rounded-xl border border-amber-200 leading-relaxed font-medium">
-                      {activeExplanation.description}
-                    </div>
-                  )}
                 </div>
 
                 {/* Pre-recorded audio track if any */}
@@ -902,12 +884,14 @@ export const HotspotViewer: React.FC<HotspotViewerProps> = ({
                   </div>
                 )}
 
-                {/* Upload photo feature for this specific checklist hotspot */}
-                <div className="mt-1">
-                  <HotspotPhotoUploader
-                    hotspot={activeHotspot}
-                  />
-                </div>
+                {/* Upload photo feature: HANYA tampil untuk Akun Guru (Dihilangkan untuk Akun Siswa) */}
+                {isTeacher && (
+                  <div className="mt-1">
+                    <HotspotPhotoUploader
+                      hotspot={activeHotspot}
+                    />
+                  </div>
+                )}
               </div>
 
               {/* Modal Footer - TUTUP ONLY */}

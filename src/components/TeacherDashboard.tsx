@@ -233,8 +233,8 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
       const l2 = pScore.level2 ? `${pScore.level2.skor}/${pScore.level2.skor_maksimal} (${pScore.level2.persentase}%)` : (s.clearedStagesCount >= 2 ? '8/8 (100%)' : '-');
       const l3 = pScore.level3 ? `${pScore.level3.skor}/${pScore.level3.skor_maksimal} (${pScore.level3.persentase}%)` : (s.clearedStagesCount >= 3 ? '5/5 (100%)' : '-');
       const l4 = pScore.level4 ? `${pScore.level4.skor}/${pScore.level4.skor_maksimal} (${pScore.level4.persentase}%)` : (s.clearedStagesCount >= 4 ? '7/7 (100%)' : '-');
-      const l5 = pScore.level5 ? `${pScore.level5.skor}/${pScore.level5.skor_maksimal} (${pScore.level5.persentase}%)` : (s.clearedStagesCount >= 5 ? '5/5 (100%)' : '-');
-      const l6 = pScore.level6 ? `${pScore.level6.skor}/${pScore.level6.skor_maksimal} (${pScore.level6.persentase}%)` : (s.clearedStagesCount >= 6 ? '5/5 (100%)' : '-');
+      const l5 = pScore.level5 ? `${pScore.level5.skor}/${pScore.level5.skor_maksimal} (${pScore.level5.persentase}%)` : (s.clearedStagesCount >= 5 ? '8/8 (100%)' : '-');
+      const l6 = pScore.level6 ? `${pScore.level6.skor}/${pScore.level6.skor_maksimal} (${pScore.level6.persentase}%)` : (s.clearedStagesCount >= 6 ? '8/8 (100%)' : '-');
       const l7 = pScore.level7 ? `${pScore.level7.skor}/${pScore.level7.skor_maksimal}` : (s.clearedStagesCount >= 7 ? '95/100' : '-');
       const l8 = pScore.level8 ? 'Selesai' : (s.clearedStagesCount >= 8 ? 'Selesai' : '-');
 
@@ -2107,7 +2107,7 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
                             {lvl.num <= 7 && (
                               <div className="text-right">
                                 <span className="font-mono font-bold text-amber-300 text-xs">
-                                  {record.skor} / {record.skor_maksimal || (lvl.num === 1 ? 14 : lvl.num === 2 ? 8 : lvl.num === 3 ? 5 : lvl.num === 4 ? 7 : lvl.num === 7 ? 100 : 5)}
+                                  {record.skor} / {record.skor_maksimal || (lvl.num === 1 ? 14 : lvl.num === 2 ? 8 : lvl.num === 3 ? 5 : lvl.num === 4 ? 7 : lvl.num === 5 ? 8 : lvl.num === 6 ? 8 : lvl.num === 7 ? 100 : 5)}
                                 </span>
                                 {record.persentase !== undefined && (
                                   <span className="text-[10px] text-slate-400 block">

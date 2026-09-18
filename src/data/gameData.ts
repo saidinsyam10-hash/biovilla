@@ -474,9 +474,61 @@ export const stagesData: Stage[] = [
         },
         {
           id: "lvl3-s3",
-          title: "Kesimpulan: Harmoni Produksi Protein",
-          imageSource: "__MEDIA__asset_037b.png",
-          nextButtonTitle: "Selesaikan & Buka Level 4"
+          title: "Evaluasi: Alur Produksi & Ekspor Protein",
+          hasSingleChoiceSet: true,
+          nextButtonTitle: "Selesaikan & Buka Level 4",
+          singleChoiceQuestions: [
+            {
+              id: "q3-1",
+              question: "Berdasarkan simulasi alur produksi protein di Desa Sel, manakah urutan perjalanan protein yang tepat dari awal sintesis hingga dikeluarkan dari sel?",
+              answers: [
+                "Ribosom → Retikulum Endoplasma Kasar → Vesikel Transpor → Badan Golgi → Membran Sel",
+                "Badan Golgi → Ribosom → Retikulum Endoplasma Kasar → Membran Sel → Vesikel Transpor",
+                "Retikulum Endoplasma Kasar → Ribosom → Membran Sel → Badan Golgi → Vesikel Transpor",
+                "Membran Sel → Vesikel Transpor → Badan Golgi → Retikulum Endoplasma Kasar → Ribosom"
+              ]
+            },
+            {
+              id: "q3-2",
+              question: "Protein yang ditujukan untuk diekspor ke luar sel atau dikirim ke membran dirakit pertama kali oleh ribosom yang menempel pada organel ...",
+              answers: [
+                "Retikulum Endoplasma Kasar (RE Kasar)",
+                "Retikulum Endoplasma Halus (RE Halus)",
+                "Badan Golgi (Aparatus Golgi)",
+                "Mitokondria"
+              ]
+            },
+            {
+              id: "q3-3",
+              question: "Setelah disintesis dan mengalami pelipatan awal di RE Kasar, molekul protein dibawa menuju Badan Golgi menggunakan perantara ...",
+              answers: [
+                "Vesikel Transpor",
+                "Difusi bebas melewati cairan sitoplasma",
+                "Enzim pencernaan Lisosom",
+                "Vakuola Sentral Penyimpanan"
+              ]
+            },
+            {
+              id: "q3-4",
+              question: "Di Desa Sel, Badan Golgi bertindak sebagai pusat pemrosesan akhir dan logistik. Apa peran utamanya dalam rangkaian produksi protein?",
+              answers: [
+                "Memodifikasi, memberi label penanda (sortir), dan mengemas protein ke dalam vesikel sekretori",
+                "Menghasilkan energi ATP untuk seluruh proses perakitan",
+                "Menyimpan kode genetik DNA sebagai cetak biru sel",
+                "Menguraikan dan menghancurkan seluruh protein yang masuk"
+              ]
+            },
+            {
+              id: "q3-5",
+              question: "Proses pelepasan molekul protein ke lingkungan luar sel melalui fusi (peleburan) membran vesikel sekretori dengan membran sel dinamakan ...",
+              answers: [
+                "Eksositosis",
+                "Endositosis",
+                "Osmosis terfasilitasi",
+                "Fagositosis"
+              ]
+            }
+          ]
         }
       ]
     }

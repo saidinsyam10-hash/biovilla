@@ -129,13 +129,18 @@ export const ScoreResultModal: React.FC<ScoreResultModalProps> = ({
         )}
 
         {/* Informative description */}
-        <p className="text-xs sm:text-sm text-slate-300 mb-6 leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-300 mb-4 leading-relaxed">
           {isPassed
-            ? 'Nilai Anda telah otomatis tersimpan ke database Firestore. Anda dapat lanjut ke level selanjutnya di peta, atau mencoba lagi untuk skor sempurna!'
+            ? 'Nilai misi level ini telah otomatis tersimpan ke database Firestore. Anda dapat lanjut ke level selanjutnya di peta, atau mencoba lagi untuk skor sempurna!'
             : isDoneOnly
             ? 'Refleksi nilai dan pemahaman Biologi Anda telah berhasil direkam ke database Firestore.'
             : 'Nilai tersimpan ke database Firestore. Anda dapat mengulang level ini sekarang untuk memperbaiki nilai, atau tetap lanjut ke level berikutnya di peta.'}
         </p>
+
+        {/* Catatan Nilai Akhir */}
+        <div className="w-full bg-amber-500/10 border border-amber-400/30 rounded-xl p-3 mb-5 text-center text-xs text-amber-200/90 leading-relaxed">
+          <span>ℹ️ <strong>Rapor Nilai Akhir:</strong> Akumulasi Nilai Akhir, Predikat, dan Kelulusan BioVillage akan otomatis muncul secara lengkap setelah <strong>Level 8</strong> selesai dikerjakan seluruhnya.</span>
+        </div>
 
         {/* Action Buttons: Retry and Continue */}
         <div className="flex flex-col sm:flex-row items-center gap-3 w-full">

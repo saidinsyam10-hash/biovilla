@@ -205,16 +205,19 @@ export const Level6ChainChallenge: React.FC<Level6Props> = ({
     }
     setEssayError('');
 
-    const finalScore = calculateTotalScore();
+    const chainScore = calculateTotalScore(); // 1 poin per misi rantai mencocokkan (maks 5 poin)
+    const essayScore = essayText.trim().length >= 10 ? 3 : 0; // 3 poin untuk soal esai
+    const finalScore = chainScore + essayScore; // total skor 0 - 8 poin
+    const maxScore = 8;
     setHasFinishedAll(true);
 
-    if (finalScore >= 4) {
+    if (finalScore >= 6) {
       sfx.playStageComplete();
     } else {
       sfx.playWrong();
     }
 
-    onComplete(finalScore, MISSIONS.length, essayText.trim());
+    onComplete(finalScore, maxScore, essayText.trim());
   };
 
   const currentScore = calculateTotalScore();
@@ -292,7 +295,7 @@ export const Level6ChainChallenge: React.FC<Level6Props> = ({
               </div>
             </div>
             <p className="text-xs sm:text-sm text-amber-100 leading-relaxed">
-              Sebagai detektif seluler, pecahkan <strong>5 Misi Rantai Sebab-Akibat</strong> (Skor Maksimal 5 Poin, Syarat Lulus Minimal 70% / 4 Benar) serta tuliskan <strong>Laporan Refleksi Detektif</strong> untuk disimpan di database Firestore!
+              Sebagai detektif seluler, pecahkan <strong>5 Misi Rantai Sebab-Akibat</strong> (1 Poin/Misi = 5 Poin) serta tuliskan <strong>Laporan Refleksi Detektif</strong> (3 Poin). Total skor maksimal: <strong>8 Poin</strong> (Syarat Lulus Minimal 70% / 6 Poin)!
             </p>
           </div>
 
@@ -467,11 +470,16 @@ export const Level6ChainChallenge: React.FC<Level6Props> = ({
 
       {/* Essay Section (Disimpan ke Firestore) */}
       <form onSubmit={handleFinalSubmit} className="bg-white rounded-2xl p-5 shadow-sm border-2 border-orange-300/80 flex flex-col gap-4">
-        <div className="flex items-center gap-2 border-b border-orange-200 pb-2">
-          <FileText className="w-5 h-5 text-orange-700" />
-          <h3 className="font-bold text-slate-900 text-base sm:text-lg">
-            Laporan Refleksi Detektif Seluler (Disimpan ke Firestore)
-          </h3>
+        <div className="flex items-center justify-between border-b border-orange-200 pb-2 flex-wrap gap-2">
+          <div className="flex items-center gap-2">
+            <FileText className="w-5 h-5 text-orange-700" />
+            <h3 className="font-bold text-slate-900 text-base sm:text-lg">
+              Laporan Refleksi Detektif Seluler
+            </h3>
+          </div>
+          <span className="text-xs font-bold text-amber-900 bg-amber-100 px-3 py-1 rounded-full border border-amber-300">
+            Bobot Esai: 3 Poin
+          </span>
         </div>
 
         <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
@@ -499,12 +507,20 @@ export const Level6ChainChallenge: React.FC<Level6Props> = ({
             </span>
           )}
         </div>
+        <span className="text-[11px] text-slate-500 italic">
+          * Jawaban esai Anda bernilai 3 poin dan disimpan secara permanen ke Firestore untuk ditinjau oleh Bapak/Ibu Guru di Dashboard Guru.
+        </span>
 
         {/* Submit Bar */}
-        <div className="flex items-center justify-between p-4 bg-amber-50 rounded-2xl border border-amber-200">
-          <span className="text-xs font-bold text-slate-700">
-            Skor Misi Terjawab Benar: {currentScore} / {MISSIONS.length} Poin
-          </span>
+        <div className="flex items-center justify-between p-4 bg-amber-50 rounded-2xl border border-amber-200 flex-wrap gap-3">
+          <div className="flex flex-col gap-0.5">
+            <span className="text-xs font-bold text-slate-800">
+              Misi Rantai: {currentScore} / {MISSIONS.length} Benar • Esai: {essayText.trim().length >= 10 ? '✓ Terisi (3 Poin)' : 'Wajib diisi (min 10 karakter)'}
+            </span>
+            <span className="text-[11px] text-slate-600">
+              Total Skor Maksimal Level 6: <strong>8 Poin</strong> (5 Rantai + 3 Esai • Minimal Lulus: 6/8 Poin)
+            </span>
+          </div>
 
           <button
             type="submit"

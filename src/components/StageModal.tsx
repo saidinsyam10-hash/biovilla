@@ -127,7 +127,7 @@ export const StageModal: React.FC<StageModalProps> = ({
                 <ShieldCheck className="w-3.5 h-3.5 text-amber-300" />
                 <span>Mode Observasi Guru</span>
               </span>
-            ) : !isAlreadyCleared ? (
+            ) : !isAlreadyCleared && !isLevel8 ? (
               <button
                 type="button"
                 onClick={() => handleComplete()}
@@ -226,8 +226,8 @@ export const StageModal: React.FC<StageModalProps> = ({
                   onComplete={(scoreData) => {
                     if (isLevel8) {
                       handleComplete({
-                        skor: scoreData?.skor ?? 0,
-                        skor_maksimal: scoreData?.skor_maksimal ?? 0,
+                        skor: scoreData?.skor ?? 10,
+                        skor_maksimal: scoreData?.skor_maksimal ?? 10,
                         status: 'selesai',
                         esai: scoreData?.esai
                       });

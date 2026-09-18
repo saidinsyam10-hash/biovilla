@@ -367,16 +367,19 @@ export const Level2TownDragDrop: React.FC<Level2TownDragDropProps> = ({
   const handleFinalComplete = async (submittedText?: string) => {
     sfx.playStageComplete();
     const finalText = submittedText || essayAnswerText;
-    const score = Math.max(Object.keys(placements).length, 4);
-    const total = DROP_ZONES.length;
+    const matchingScore = Object.keys(placements).length; // 1 poin per pasangan (maks 5 poin)
+    const essayScore = (finalText && finalText.trim().length >= 10) ? 3 : 0; // 3 poin untuk soal esai
+    const totalScore = matchingScore + essayScore; // total skor 0 - 8
+    const totalMax = 8;
+    const isPassed = totalScore >= 6; // Syarat lulus minimal 70% (6/8 poin)
 
     // Save final record with essay in Firestore
     const user = getCurrentUser();
     if (user?.username) {
       try {
         await saveLevelScore(user.username, 'level2', {
-          skor: score,
-          skor_maksimal: total,
+          skor: totalScore,
+          skor_maksimal: totalMax,
           esai: finalText
         });
       } catch (err) {
@@ -385,9 +388,9 @@ export const Level2TownDragDrop: React.FC<Level2TownDragDropProps> = ({
     }
 
     onComplete({
-      skor: score,
-      skor_maksimal: total,
-      status: 'lulus',
+      skor: totalScore,
+      skor_maksimal: totalMax,
+      status: isPassed ? 'lulus' : 'belum_lulus',
       esai: finalText
     });
   };
@@ -456,7 +459,7 @@ export const Level2TownDragDrop: React.FC<Level2TownDragDropProps> = ({
                 </h3>
               </div>
               <p className="text-xs sm:text-sm text-emerald-100 mt-1">
-                Pasangkan 5 fasilitas desa (Balai Desa, Pasar, Pelabuhan, Pembangkit Energi, Gerbang Desa) dengan organel yang tepat.
+                Pasangkan 5 fasilitas desa dengan organel yang tepat (1 poin/pasang = 5 poin) + Soal Esai Refleksi (3 poin). Total skor maksimal: 8 poin.
               </p>
             </div>
 
@@ -652,9 +655,12 @@ export const Level2TownDragDrop: React.FC<Level2TownDragDropProps> = ({
           {/* Essay Context Card */}
           <div className="bg-gradient-to-r from-teal-900 via-emerald-900 to-slate-900 text-white rounded-2xl p-5 shadow-lg border border-emerald-500/30">
             <div className="flex items-center justify-between gap-3 mb-2">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <span className="bg-amber-400 text-slate-950 text-xs font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                   Level 2 • Bagian 2
+                </span>
+                <span className="bg-emerald-500/30 text-emerald-200 border border-emerald-400/40 text-[11px] font-bold px-2 py-0.5 rounded-full">
+                  Soal Esai: 3 Poin
                 </span>
                 <h3 className="font-bold text-base sm:text-lg font-fredoka text-amber-300">
                   Refleksi Analogi Desa Sel

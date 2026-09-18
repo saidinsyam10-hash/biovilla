@@ -18,7 +18,8 @@ import {
   Backpack,
   BookOpen,
   Loader2,
-  CheckCircle2
+  CheckCircle2,
+  Trophy
 } from 'lucide-react';
 
 interface GameMapProps {
@@ -33,6 +34,7 @@ interface GameMapProps {
   onLogout?: () => void;
   onOpenLogin?: () => void;
   onOpenWelcomeScreen?: () => void;
+  onOpenFinalReport?: () => void;
 }
 
 interface PathSegment {
@@ -53,7 +55,8 @@ export const GameMap: React.FC<GameMapProps> = ({
   currentUser = null,
   onLogout,
   onOpenLogin,
-  onOpenWelcomeScreen
+  onOpenWelcomeScreen,
+  onOpenFinalReport
 }) => {
   const [lockedAlert, setLockedAlert] = useState<string | null>(null);
   const [customBgUrl, setCustomBgUrl] = useState<string | null>(null);
@@ -118,14 +121,14 @@ export const GameMap: React.FC<GameMapProps> = ({
       await saveMediaBlob('asset_002', file, 'asset_002.png');
       await saveMediaBlob('asset_002.png', file, 'asset_002.png');
 
-      // 2. Unggah langsung ke Server Disk (/public/assets/) - server otomatis menghapus berkas lama
+      // 2. Unggah langsung ke Server Disk (/public/assets/) - server menyimpan permanen
       try {
         await uploadMediaFileServer('asset_002', file, 'asset_002.png');
       } catch (uploadErr) {
         console.warn('[Map Upload] Server storage note:', uploadErr);
       }
 
-      setBgUploadSuccess('Foto Peta Desa Sel berhasil disimpan di server & berkas lama telah dihapus!');
+      setBgUploadSuccess('Foto Peta Desa Sel berhasil disimpan secara permanen!');
       setTimeout(() => setBgUploadSuccess(null), 4000);
     } catch (err) {
       console.error('Failed to update map background:', err);
@@ -286,6 +289,8 @@ export const GameMap: React.FC<GameMapProps> = ({
     }
   ];
 
+  const isLevel8Done = stages.some(s => (s.stageIndex === 9 || s.label.includes('Level 8')) && clearedStageIds.has(s.id));
+
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col items-center select-none">
       {/* Hidden file input for asset_002 */}
@@ -373,6 +378,22 @@ export const GameMap: React.FC<GameMapProps> = ({
             <span className="text-[10px] sm:text-[11px] font-bold text-slate-300">{totalCleared}/{stages.length}</span>
           </div>
 
+          {/* Tombol Buka Rapor Nilai Akhir jika Level 8 tuntas */}
+          {isLevel8Done && onOpenFinalReport && (
+            <button
+              type="button"
+              onClick={() => {
+                sfx.playClick();
+                onOpenFinalReport();
+              }}
+              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl text-[11px] sm:text-xs font-black flex items-center gap-1.5 bg-gradient-to-r from-amber-400 to-yellow-400 text-slate-950 border border-amber-300 transition-all cursor-pointer shadow-lg shadow-amber-500/30 animate-pulse active:scale-95"
+              title="Buka dan Cetak Rapor Nilai Akhir BioVillage"
+            >
+              <Trophy className="w-3.5 h-3.5 text-amber-950" />
+              <span>Rapor Nilai Akhir</span>
+            </button>
+          )}
+
           {/* Welcome Screen / Intro Misi Button */}
           {onOpenWelcomeScreen && (
             <button
@@ -389,21 +410,23 @@ export const GameMap: React.FC<GameMapProps> = ({
             </button>
           )}
 
-          {/* Tombol Ganti Peta Desa */}
-          <button
-            type="button"
-            onClick={() => fileInputRef.current?.click()}
-            disabled={isUploadingBg}
-            className="px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl text-[11px] sm:text-xs font-bold flex items-center gap-1 sm:gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-400/80 transition-all cursor-pointer shadow active:scale-95 disabled:opacity-50"
-            title="Ganti foto latar belakang Peta Desa Sel"
-          >
-            {isUploadingBg ? (
-              <Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-200" />
-            ) : (
-              <Upload className="w-3.5 h-3.5 text-emerald-200" />
-            )}
-            <span className="hidden xs:inline sm:inline">Ganti Peta</span>
-          </button>
+          {/* Tombol Ganti Peta Desa (Khusus Akun Guru, Tersembunyi untuk Siswa) */}
+          {currentUser?.role === 'guru' && (
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              disabled={isUploadingBg}
+              className="px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl text-[11px] sm:text-xs font-bold flex items-center gap-1 sm:gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-400/80 transition-all cursor-pointer shadow active:scale-95 disabled:opacity-50"
+              title="Ganti foto latar belakang Peta Desa Sel (Khusus Guru)"
+            >
+              {isUploadingBg ? (
+                <Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-200" />
+              ) : (
+                <Upload className="w-3.5 h-3.5 text-emerald-200" />
+              )}
+              <span className="hidden xs:inline sm:inline">Ganti Peta</span>
+            </button>
+          )}
 
           {/* Sound Toggle */}
           <button
@@ -458,10 +481,12 @@ export const GameMap: React.FC<GameMapProps> = ({
         <div 
           className="relative w-full aspect-[1024/554] rounded-3xl overflow-hidden shadow-2xl border-2 sm:border-4 border-amber-900/60 bg-emerald-950/40"
           onDragOver={(e) => {
+            if (currentUser?.role !== 'guru') return;
             e.preventDefault();
             setIsDragging(true);
           }}
           onDragLeave={(e) => {
+            if (currentUser?.role !== 'guru') return;
             if (!e.currentTarget.contains(e.relatedTarget as Node)) {
               setIsDragging(false);
             }
@@ -469,6 +494,7 @@ export const GameMap: React.FC<GameMapProps> = ({
           onDrop={async (e) => {
             e.preventDefault();
             setIsDragging(false);
+            if (currentUser?.role !== 'guru') return;
             const file = e.dataTransfer.files?.[0];
             if (file) {
               await processFile(file);
@@ -500,14 +526,16 @@ export const GameMap: React.FC<GameMapProps> = ({
                 <p className="text-xs text-slate-300 mb-4">
                   Letakkan file <code>asset_002.png</code> di <code>/public/assets/</code> atau pilih langsung menggunakan tombol di bawah ini.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => fileInputRef.current?.click()}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow cursor-pointer transition-all active:scale-95"
-                >
-                  <Upload className="w-4 h-4" />
-                  <span>Pilih Berkas asset_002.png</span>
-                </button>
+                {currentUser?.role === 'guru' && (
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow cursor-pointer transition-all active:scale-95"
+                  >
+                    <Upload className="w-4 h-4" />
+                    <span>Pilih Berkas asset_002.png</span>
+                  </button>
+                )}
               </div>
             </div>
           )}

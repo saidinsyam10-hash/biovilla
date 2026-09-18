@@ -53,7 +53,7 @@ export const DragDropActivity: React.FC<DragDropActivityProps> = ({
   if (isLevel6Task) {
     return (
       <Level6ChainChallenge
-        onComplete={(score, maxScore) => onComplete?.({ skor: score, skor_maksimal: maxScore })}
+        onComplete={(score, maxScore, essayText) => onComplete?.({ skor: score, skor_maksimal: maxScore, esai: essayText })}
         isAlreadyCleared={isAlreadyCleared}
       />
     );

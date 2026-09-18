@@ -3,6 +3,16 @@ import { db, handleFirestoreError, OperationType } from '../firebase';
 import { LevelProgressRecord, NilaiAkhirRecord, StudentProgressWithScores, StudentProgressRecord } from '../types';
 import { getStudentsList } from './authStore';
 
+// Aturan Bobot Penilaian Global BioVillage:
+// - Pilihan Ganda: 1 soal = 1 poin
+// - Esai: 1 soal = 3 poin
+// - Mencocokkan: 1 soal / pasangan = 1 poin
+export const SCORING_WEIGHTS = {
+  PILIHAN_GANDA: 1, // 1 poin per soal pilihan ganda
+  ESSAI: 3,         // 3 poin per soal esai
+  MENCOCOKKAN: 1,   // 1 poin per soal/pasangan mencocokkan
+} as const;
+
 export interface LevelRule {
   id: string;
   title: string;
@@ -21,7 +31,7 @@ export const LEVEL_RULES: Record<string, LevelRule> = {
     skorMaksimal: 14,
     passPercent: 70,
     minPassPoints: 10,
-    description: 'Kuis 14 soal, skor maksimal 14 poin, syarat lulus minimal 70% (10/14 benar)'
+    description: 'Kuis 14 soal pilihan ganda (1 poin/soal), skor maksimal 14 poin, syarat lulus minimal 70% (10/14 benar)'
   },
   level2: {
     id: 'level2',
@@ -30,7 +40,7 @@ export const LEVEL_RULES: Record<string, LevelRule> = {
     skorMaksimal: 8,
     passPercent: 70,
     minPassPoints: 6,
-    description: 'Drag & Drop 8 pasang, skor maksimal 8 poin, syarat lulus minimal 70% (6/8 benar)'
+    description: 'Mencocokkan 5 sarana desa (1 poin/pasang) + 1 soal esai (3 poin), skor maksimal 8 poin, syarat lulus minimal 70% (6/8 poin)'
   },
   level3: {
     id: 'level3',
@@ -39,7 +49,7 @@ export const LEVEL_RULES: Record<string, LevelRule> = {
     skorMaksimal: 5,
     passPercent: 70,
     minPassPoints: 4,
-    description: 'Susun urutan 5 langkah, skor maksimal 5 poin, syarat lulus minimal 70%'
+    description: 'Susun urutan 5 langkah alur protein (1 poin/langkah benar), skor maksimal 5 poin, syarat lulus minimal 70% (4/5 benar)'
   },
   level4: {
     id: 'level4',
@@ -48,25 +58,25 @@ export const LEVEL_RULES: Record<string, LevelRule> = {
     skorMaksimal: 7,
     passPercent: 70,
     minPassPoints: 5,
-    description: 'Kuis analisis 7 soal (3 babak: observasi gejala, telusuri mekanisme, prediksi dampak), skor maksimal 7 poin, syarat lulus minimal 70% (5/7 benar)'
+    description: 'Kuis analisis 7 soal pilihan ganda (1 poin/soal, termasuk hitungan matematika respirasi glukosa-ATP), skor maksimal 7 poin, syarat lulus minimal 70% (5/7 benar)'
   },
   level5: {
     id: 'level5',
     title: 'Level 5: Krisis Distribusi Desa Sel',
     stageIndex: 6,
-    skorMaksimal: 5,
+    skorMaksimal: 8,
     passPercent: 70,
-    minPassPoints: 4,
-    description: 'Kuis + esai 5 soal, skor maksimal 5 poin untuk bagian objektif, jawaban esai disimpan sebagai teks, syarat lulus 70% pada bagian objektif'
+    minPassPoints: 6,
+    description: '5 Soal pilihan ganda (1 poin/soal) + 1 soal esai analisis pemecahan masalah (3 poin), skor maksimal 8 poin, syarat lulus minimal 70% (6/8 poin)'
   },
   level6: {
     id: 'level6',
     title: 'Level 6: Detektif Kerusakan Sistem Sel',
     stageIndex: 7,
-    skorMaksimal: 5,
+    skorMaksimal: 8,
     passPercent: 70,
-    minPassPoints: 4,
-    description: 'Rantai sebab-akibat + esai, 5 tantangan, skor maksimal 5 poin, jawaban esai disimpan sebagai teks, syarat lulus 70%'
+    minPassPoints: 6,
+    description: '5 Misi rantai sebab-akibat (1 poin/misi) + 1 soal esai refleksi detektif (3 poin), skor maksimal 8 poin, syarat lulus minimal 70% (6/8 poin)'
   },
   level7: {
     id: 'level7',

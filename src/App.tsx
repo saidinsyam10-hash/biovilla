@@ -12,11 +12,11 @@ import { RegisterModal } from './components/RegisterModal';
 import { ScoreResultModal } from './components/ScoreResultModal';
 import { AiTutorChatWidget } from './components/AiTutorChatWidget';
 import { stagesData } from './data/gameData';
-import { Stage, UserAccount, LevelProgressRecord } from './types';
+import { Stage, UserAccount, LevelProgressRecord, NilaiAkhirRecord } from './types';
 import { sfx } from './utils/audio';
 import { initMediaStore } from './utils/mediaStore';
 import { getCurrentUser, logoutUser, syncCurrentStudentProgress } from './utils/authStore';
-import { saveLevelScore } from './utils/scoreStore';
+import { saveLevelScore, hitungNilaiAkhir } from './utils/scoreStore';
 import { syncFinalScoreToGoogleSheets } from './utils/googleSheetsSync';
 import { ScoreDataPayload } from './components/StageModal';
 import { ArrowLeft, ShieldCheck, Video } from 'lucide-react';
@@ -75,6 +75,8 @@ export default function App() {
     record: LevelProgressRecord;
     levelId: string;
   } | null>(null);
+  const [latestNilaiAkhir, setLatestNilaiAkhir] = useState<NilaiAkhirRecord | null>(null);
+  const [studentScoresMap, setStudentScoresMap] = useState<Record<string, LevelProgressRecord>>({});
 
   function getLevelIdFromStage(stage: Stage): string | null {
     if (stage.stageIndex === 2 || stage.label.includes('Level 1')) return 'level1';
@@ -226,28 +228,45 @@ export default function App() {
       if (levelId) {
         try {
           const effectiveScoreData = scoreData || {
-            skor: levelId === 'level1' ? 14 : levelId === 'level2' ? 8 : levelId === 'level3' ? 5 : levelId === 'level4' ? 7 : levelId === 'level7' ? 100 : 5,
-            skor_maksimal: levelId === 'level1' ? 14 : levelId === 'level2' ? 8 : levelId === 'level3' ? 5 : levelId === 'level4' ? 7 : levelId === 'level7' ? 100 : 5
+            skor: levelId === 'level1' ? 14 : levelId === 'level2' ? 8 : levelId === 'level3' ? 5 : levelId === 'level4' ? 7 : levelId === 'level5' ? 8 : levelId === 'level6' ? 8 : levelId === 'level7' ? 100 : 10,
+            skor_maksimal: levelId === 'level1' ? 14 : levelId === 'level2' ? 8 : levelId === 'level3' ? 5 : levelId === 'level4' ? 7 : levelId === 'level5' ? 8 : levelId === 'level6' ? 8 : levelId === 'level7' ? 100 : 10
           };
 
           const record = await saveLevelScore(currentUser.username, levelId, effectiveScoreData);
 
-          if (stage) {
-            setCompletedResult({
-              stage,
-              record,
-              levelId
-            });
-          }
+          // Update local student score mapping
+          setStudentScoresMap(prev => ({ ...prev, [levelId]: record }));
 
-          // Otomatis sinkronisasi nilai akhir ke Google Sheets saat siswa menyelesaikan Level 8
-          if (levelId === 'level8') {
+          if (levelId !== 'level8') {
+            // Untuk Level 1 s.d. Level 7: tampilkan modal capaian level ini
+            if (stage) {
+              setCompletedResult({
+                stage,
+                record,
+                levelId
+              });
+            }
+          } else {
+            // Khusus Level 8: Puncak petualangan selesai!
+            // Hitung nilai akhir komprehensif, sinkronisasi Google Sheets, dan munculkan Rapor Nilai Akhir
+            try {
+              const finalReport = await hitungNilaiAkhir(currentUser.username);
+              setLatestNilaiAkhir(finalReport);
+            } catch (calcErr) {
+              console.warn('Gagal menghitung nilai akhir Level 8:', calcErr);
+            }
+
             syncFinalScoreToGoogleSheets(
               currentUser.username,
               currentUser.fullName || currentUser.nama || currentUser.username
             ).catch(err => {
               console.warn('[Google Sheets Sync] Gagal sinkronisasi otomatis Level 8:', err);
             });
+
+            // Tampilkan Rapor Nilai Akhir (EndScreen) secara langsung
+            setTimeout(() => {
+              setShowEndScreen(true);
+            }, 300);
           }
         } catch (err) {
           console.error('Failed to save score to Firestore:', err);
@@ -260,10 +279,10 @@ export default function App() {
       .filter(s => s.stageIndex >= 2)
       .every(s => nextSet.has(s.id));
 
-    if (allLevelsCompleted || nextSet.size >= stagesData.length) {
+    if (levelId === 'level8' || allLevelsCompleted || nextSet.size >= stagesData.length) {
       setTimeout(() => {
         setShowEndScreen(true);
-      }, 600);
+      }, levelId === 'level8' ? 300 : 600);
     }
   };
 
@@ -355,6 +374,10 @@ export default function App() {
         totalStars={totalStars}
         clearedCount={clearedStageIds.size}
         studentName={currentUser?.fullName || currentUser?.nama || currentUser?.username}
+        studentId={currentUser?.username}
+        studentUser={currentUser}
+        nilaiAkhir={latestNilaiAkhir}
+        progresScores={studentScoresMap}
         onReviewMap={() => setShowEndScreen(false)}
         onRestart={executeReset}
       />
@@ -422,6 +445,7 @@ export default function App() {
         currentUser={currentUser}
         onLogout={handleLogout}
         onOpenLogin={() => setIsLoginModalOpen(true)}
+        onOpenFinalReport={() => setShowEndScreen(true)}
       />
 
       {/* Active Stage Modal Dialog */}

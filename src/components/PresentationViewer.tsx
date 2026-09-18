@@ -53,6 +53,7 @@ export const PresentationViewer: React.FC<PresentationViewerProps> = ({
   const [imageError, setImageError] = useState<Record<number, boolean>>({});
   const [recordedScore, setRecordedScore] = useState<{ skor: number; skor_maksimal: number; esai?: string } | null>(null);
   const [essaySubmissions, setEssaySubmissions] = useState<Record<string, string>>({});
+  const [level8CorrectMap, setLevel8CorrectMap] = useState<Record<string, boolean>>({});
 
   // Custom media management with strict per-slide isolation
   const [isSlideConfigOpen, setIsSlideConfigOpen] = useState(false);
@@ -144,10 +145,13 @@ export const PresentationViewer: React.FC<PresentationViewerProps> = ({
       const formattedEssays = Object.entries(essaySubmissions)
         .map(([title, text]) => `[${title}]\n${text}`)
         .join('\n\n');
+
+      const l8Correct = isLevel8 ? Object.values(level8CorrectMap).filter(Boolean).length : undefined;
       onComplete({
         ...(effectiveScore || { skor: 0, skor_maksimal: 0 }),
-        skor: effectiveScore?.skor ?? 0,
-        skor_maksimal: effectiveScore?.skor_maksimal ?? 0,
+        skor: isLevel8 ? (l8Correct ?? 10) : (effectiveScore?.skor ?? 0),
+        skor_maksimal: isLevel8 ? 10 : (effectiveScore?.skor_maksimal ?? 0),
+        status: isLevel8 ? 'selesai' : undefined,
         esai: formattedEssays || extraScore?.esai || effectiveScore?.esai
       });
     }
@@ -335,34 +339,46 @@ export const PresentationViewer: React.FC<PresentationViewerProps> = ({
                 <button
                   key={idx}
                   type="button"
+                  disabled={isLevel8 && !isAlreadyCleared && !completedSlides.has(idx) && idx > currentSlideIdx}
                   onClick={() => {
+                    if (isLevel8 && !isAlreadyCleared && !completedSlides.has(idx) && idx > currentSlideIdx) return;
                     sfx.playClick();
                     setCurrentSlideIdx(idx);
                   }}
-                  className={`h-2.5 rounded-full transition-all cursor-pointer ${
-                    idx === currentSlideIdx
-                      ? 'w-7 bg-amber-400'
-                      : completedSlides.has(idx) || isAlreadyCleared
-                      ? 'w-2.5 bg-emerald-400'
-                      : 'w-2.5 bg-emerald-700/80 hover:bg-emerald-600'
+                  className={`h-2.5 rounded-full transition-all ${
+                    isLevel8 && !isAlreadyCleared && !completedSlides.has(idx) && idx > currentSlideIdx
+                      ? 'w-2 bg-slate-400/40 cursor-not-allowed opacity-50'
+                      : 'cursor-pointer ' + (
+                          idx === currentSlideIdx
+                            ? 'w-7 bg-amber-400'
+                            : completedSlides.has(idx) || isAlreadyCleared
+                            ? 'w-2.5 bg-emerald-400'
+                            : 'w-2.5 bg-emerald-700/80 hover:bg-emerald-600'
+                        )
                   }`}
-                  title={`Ke Slide ${idx + 1}`}
+                  title={
+                    isLevel8 && !isAlreadyCleared && !completedSlides.has(idx) && idx > currentSlideIdx
+                      ? `Selesaikan slide sebelumnya terlebih dahulu`
+                      : `Ke Slide ${idx + 1}`
+                  }
                 />
               ))}
             </div>
 
-            <button
-              type="button"
-              onClick={() => {
-                sfx.playStageComplete();
-                onComplete(recordedScore || undefined);
-              }}
-              className="px-2.5 sm:px-3 py-1 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all"
-              title="Selesaikan pengerjaan level ini dan buka kunci level selanjutnya"
-            >
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-800" />
-              <span className="hidden sm:inline">Selesai Misi</span>
-            </button>
+            {!isLevel8 && (
+              <button
+                type="button"
+                onClick={() => {
+                  sfx.playStageComplete();
+                  onComplete(recordedScore || undefined);
+                }}
+                className="px-2.5 sm:px-3 py-1 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all"
+                title="Selesaikan pengerjaan level ini dan buka kunci level selanjutnya"
+              >
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-800" />
+                <span className="hidden sm:inline">Selesai Misi</span>
+              </button>
+            )}
           </div>
         </div>
       )}
@@ -729,9 +745,13 @@ export const PresentationViewer: React.FC<PresentationViewerProps> = ({
             <QuizMultiChoice
               key={curSlide.id || curSlide.multiChoiceQuestion.id || `slide-${currentSlideIdx}`}
               question={curSlide.multiChoiceQuestion}
-              nextButtonLabel={curSlide.nextButtonTitle || "Lanjut"}
-              onAnswerSubmit={() => {
+              nextButtonLabel={curSlide.nextButtonTitle || (currentSlideIdx === slides.length - 1 ? "Selesaikan Petualangan Paripurna" : "Lanjut")}
+              onAnswerSubmit={(isCorrect) => {
                 markCurrentSlideCompleted();
+                if (isLevel8 && curSlide.multiChoiceQuestion) {
+                  const qKey = curSlide.multiChoiceQuestion.id || `mc_${currentSlideIdx}`;
+                  setLevel8CorrectMap(prev => ({ ...prev, [qKey]: isCorrect }));
+                }
                 handleNextSlide();
               }}
             />

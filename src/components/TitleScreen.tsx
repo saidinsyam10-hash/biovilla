@@ -374,15 +374,17 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
                   </span>
                 )}
               </div>
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                className="text-emerald-700 hover:text-emerald-800 font-semibold underline flex items-center gap-1 cursor-pointer"
-                title="Pilih berkas video dari komputer"
-              >
-                <Upload className="w-3 h-3" />
-                <span>Ganti/Pilih Video</span>
-              </button>
+              {currentUser?.role === 'guru' && (
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="text-emerald-700 hover:text-emerald-800 font-semibold underline flex items-center gap-1 cursor-pointer"
+                  title="Pilih berkas video dari komputer (Khusus Guru)"
+                >
+                  <Upload className="w-3 h-3" />
+                  <span>Ganti/Pilih Video</span>
+                </button>
+              )}
               {/* Hidden file input for uploading video */}
               <input
                 type="file"

@@ -137,17 +137,20 @@ export const Level5DistributionCrisis: React.FC<Level5Props> = ({
     }
     setEssayError('');
 
-    const finalScore = calculateScore();
+    const pgScore = calculateScore(); // 1 poin per soal PG (maks 5 poin)
+    const essayScore = essayText.trim().length >= 10 ? 3 : 0; // 3 poin untuk soal esai
+    const finalScore = pgScore + essayScore; // Total skor 0 - 8 poin
+    const maxScore = 8;
     setHasSubmitted(true);
 
-    if (finalScore >= 4) {
+    if (finalScore >= 6) {
       sfx.playStageComplete();
     } else {
       sfx.playWrong();
     }
 
-    // Pass final score (0-5), max score (5), and essay text
-    onComplete(finalScore, QUESTIONS.length, essayText.trim());
+    // Pass final score (0-8), max score (8), and essay text
+    onComplete(finalScore, maxScore, essayText.trim());
   };
 
   const handleReset = () => {
@@ -234,7 +237,7 @@ export const Level5DistributionCrisis: React.FC<Level5Props> = ({
               </div>
             </div>
             <p className="text-xs sm:text-sm text-emerald-100 leading-relaxed">
-              Pusat sortir Badan Golgi dan armada Vesikel Transpor mengalami hambatan distribusi! Selesaikan <strong>5 Soal Objektif</strong> (Skor Maks 5, Syarat Lulus Minimal 70% / 4 Benar) serta tuliskan <strong>Analisis Esai</strong> strategi pemulihan sistem logistik desa.
+              Pusat sortir Badan Golgi dan armada Vesikel Transpor mengalami hambatan distribusi! Selesaikan <strong>5 Soal Pilihan Ganda</strong> (1 Poin/Soal = 5 Poin) serta tuliskan <strong>Analisis Esai</strong> (3 Poin). Total skor maksimal: <strong>8 Poin</strong> (Syarat Lulus Minimal 70% / 6 Poin).
             </p>
           </div>
 
@@ -246,11 +249,11 @@ export const Level5DistributionCrisis: React.FC<Level5Props> = ({
             <div className="flex items-center gap-2">
               <Package className="w-5 h-5 text-emerald-700" />
               <h3 className="font-bold text-slate-900 text-base sm:text-lg">
-                Bagian A: Kuis Objektif Pemahaman Distribusi (5 Soal)
+                Bagian A: Kuis Pilihan Ganda Pemahaman Distribusi (5 Soal)
               </h3>
             </div>
             <span className="text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">
-              Bobot: 1 Poin per Soal (Maks 5)
+              Bobot: 1 Poin per Soal (Maks 5 Poin)
             </span>
           </div>
 
@@ -329,11 +332,16 @@ export const Level5DistributionCrisis: React.FC<Level5Props> = ({
 
         {/* Section 2: Essay Question */}
         <div className="bg-white rounded-2xl p-5 shadow-sm border-2 border-teal-300/80 flex flex-col gap-3">
-          <div className="flex items-center gap-2 border-b border-teal-200 pb-2">
-            <FileText className="w-5 h-5 text-teal-700" />
-            <h3 className="font-bold text-slate-900 text-base sm:text-lg">
-              Bagian B: Analisis Esai Pemecahan Masalah (Disimpan ke Firestore)
-            </h3>
+          <div className="flex items-center justify-between border-b border-teal-200 pb-2 flex-wrap gap-2">
+            <div className="flex items-center gap-2">
+              <FileText className="w-5 h-5 text-teal-700" />
+              <h3 className="font-bold text-slate-900 text-base sm:text-lg">
+                Bagian B: Analisis Esai Pemecahan Masalah
+              </h3>
+            </div>
+            <span className="text-xs font-bold text-teal-800 bg-teal-100 px-3 py-1 rounded-full border border-teal-300">
+              Bobot Esai: 3 Poin
+            </span>
           </div>
 
           <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
@@ -364,15 +372,18 @@ export const Level5DistributionCrisis: React.FC<Level5Props> = ({
             )}
           </div>
           <span className="text-[11px] text-slate-500 italic">
-            * Jawaban esai Anda akan disimpan secara permanen ke koleksi Firestore subkoleksi progres siswa untuk ditinjau oleh Bapak/Ibu Guru di Dashboard Guru.
+            * Jawaban esai Anda bernilai 3 poin dan disimpan secara permanen ke Firestore untuk ditinjau oleh Bapak/Ibu Guru di Dashboard Guru.
           </span>
         </div>
 
         {/* Submit Bar */}
-        <div className="flex items-center justify-between p-4 bg-amber-100/90 rounded-2xl border-2 border-amber-300 shadow-sm">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-bold text-slate-700">
-              Status Pengerjaan: {Object.keys(selectedAnswers).length} / {QUESTIONS.length} Soal Dijawab
+        <div className="flex items-center justify-between p-4 bg-amber-100/90 rounded-2xl border-2 border-amber-300 shadow-sm flex-wrap gap-3">
+          <div className="flex flex-col gap-0.5">
+            <span className="text-xs font-bold text-slate-800">
+              PG: {Object.keys(selectedAnswers).length} / {QUESTIONS.length} Dijawab • Esai: {essayText.trim().length >= 10 ? '✓ Terisi (3 Poin)' : 'Wajib diisi (min 10 karakter)'}
+            </span>
+            <span className="text-[11px] text-slate-600">
+              Total Skor Maksimal Level 5: <strong>8 Poin</strong> (5 PG + 3 Esai • Minimal Lulus: 6/8 Poin)
             </span>
           </div>
 

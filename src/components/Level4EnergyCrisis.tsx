@@ -22,7 +22,11 @@ import {
   Maximize2,
   X,
   Microscope,
-  FlaskConical
+  FlaskConical,
+  Calculator,
+  Lightbulb,
+  BatteryCharging,
+  Flame
 } from 'lucide-react';
 import { UserAccount } from '../types';
 import { LevelVideoSlide } from './LevelVideoSlide';
@@ -68,99 +72,476 @@ const QUESTIONS: QuestionData[] = [
   {
     id: 'q1',
     round: 1,
-    roundTitle: 'Babak 1 – Observasi Gejala Biologis',
-    prompt: 'Berdasarkan hasil pemindaian tiga indikator biologis sel nyata, manakah rangkaian patologi seluler yang secara langsung membuktikan terjadinya penurunan drastis pasokan ATP?',
+    roundTitle: 'Babak 1 – Observasi Gejala Pemadaman',
+    prompt: 'Ketika mitokondria kehabisan energi ATP, fasilitas manakah di Desa Sel yang langsung berhenti bekerja?',
     options: [
-      { id: 'a', text: 'Runtuhnya gradien proton krista mitokondria, terhentinya sintesis protein di ribosom/RE, dan kolapsnya pompa ion Na⁺/K⁺ pada membran sel', isCorrect: true },
-      { id: 'b', text: 'Peningkatan replikasi materi genetik di nukleus dan pembesaran ukuran vakuola secara abnormal', isCorrect: false },
-      { id: 'c', text: 'Pemisahan dinding sel dan percepatan pembelahan organel secara spontan tanpa enzim', isCorrect: false },
-      { id: 'd', text: 'Penumpukan cadangan pati dan pembentukan kloroplas baru di seluruh sitoplasma', isCorrect: false },
+      { id: 'a', text: 'Pabrik protein (RE & Ribosom) macet dan pompa gerbang membran sel mati', isCorrect: true },
+      { id: 'b', text: 'Inti sel membesar dan membelah dua kali lipat secara tiba-tiba', isCorrect: false },
+      { id: 'c', text: 'Dinding pelindung sel langsung mencair seketika', isCorrect: false },
+      { id: 'd', text: 'Seluruh cairan sitoplasma berubah menjadi gas', isCorrect: false },
     ],
-    explanation: 'Semua proses kerja biologis seluler — mulai dari fosforilasi oksidatif di mitokondria, translasi polipeptida oleh ribosom di RE, hingga transpor aktif pompa ion Na⁺/K⁺ pada membran plasma — mutlak membutuhkan suplai energi kontinu dari hidrolisis ATP.'
+    explanation: 'ATP adalah sumber energi utama sel. Tanpa pasokan ATP dari mitokondria, ribosom tidak dapat merangkai protein dan pompa ion pada membran sel mati, sehingga aktivitas sel lumpuh total.'
   },
   {
     id: 'q2',
     round: 1,
-    roundTitle: 'Babak 1 – Observasi Gejala Biologis',
-    prompt: 'Mengapa krisis energi pada mitokondria dapat melumpuhkan seluruh organel lain di dalam sel?',
+    roundTitle: 'Babak 1 – Observasi Gejala Pemadaman',
+    prompt: 'Mengapa mitokondria dijuluki sebagai "Pembangkit Tenaga Listrik Desa Sel"?',
     options: [
-      { id: 'a', text: 'Karena ATP merupakan "mata uang energi" universal yang mutlak diperlukan hampir semua organel untuk transpor aktif, biosintesis makromolekul, dan motilitas seluler', isCorrect: true },
-      { id: 'b', text: 'Karena mitokondria menyimpan seluruh cetak biru genetik yang mengatur identitas organel lain', isCorrect: false },
-      { id: 'c', text: 'Karena mitokondria berfungsi menyaring seluruh limbah beracun sebelum masuk ke lisosom', isCorrect: false },
-      { id: 'd', text: 'Karena mitokondria menyintesis lipid penyusun membran pelindung inti sel', isCorrect: false },
+      { id: 'a', text: 'Karena mitokondria memproduksi sekitar 90% energi ATP yang dibutuhkan seluruh organel', isCorrect: true },
+      { id: 'b', text: 'Karena mitokondria menyimpan seluruh arsip cetak biru genetik DNA sel', isCorrect: false },
+      { id: 'c', text: 'Karena mitokondria bertugas mendaur ulang sampah sel', isCorrect: false },
+      { id: 'd', text: 'Karena mitokondria membungkus paket zat untuk diekspor ke luar sel', isCorrect: false },
     ],
-    explanation: 'Mitokondria adalah produsen utama ATP (~90% energi sel). Tanpa ATP, reaksi-reaksi endergonik di ribosom, retikulum endoplasma, dan badan golgi tidak memiliki daya dorong termodinamika untuk berlangsung.'
+    explanation: 'Mitokondria mengolah sari makanan melalui respirasi seluler aerob untuk menghasilkan puluhan ATP dari setiap molekul glukosa guna menyalakan kehidupan sel.'
   },
 
   // Babak 2 – Telusuri Mekanisme (3 Soal)
   {
     id: 'q3',
     round: 2,
-    roundTitle: 'Babak 2 – Telusuri Mekanisme',
-    prompt: 'Organel bermembran ganda dengan krista berlipat dan matriks yang menjadi pusat pembangkit daya utama sel ini adalah ...',
+    roundTitle: 'Babak 2 – Telusuri Mesin Pembangkit',
+    prompt: 'Organel sel bermembran ganda yang memiliki lipatan krista tempat turbin pembuat ATP berputar adalah ...',
     options: [
       { id: 'a', text: 'Mitokondria', isCorrect: true },
       { id: 'b', text: 'Retikulum Endoplasma', isCorrect: false },
-      { id: 'c', text: 'Lisosom', isCorrect: false },
-      { id: 'd', text: 'Peroksisom', isCorrect: false },
+      { id: 'c', text: 'Badan Golgi', isCorrect: false },
+      { id: 'd', text: 'Lisosom', isCorrect: false },
     ],
-    explanation: 'Mitokondria memiliki membran luar halus, membran dalam yang berlekuk-lekuk membentuk krista untuk memperluas bidang reaksi rantai transpor elektron, serta matriks tempat berlangsungnya siklus Krebs.'
+    explanation: 'Mitokondria memiliki membran luar dan membran dalam berlipat-lipat (krista) yang berfungsi menampung jutaan turbin enzim ATP Sintase pembuat energi.'
   },
   {
     id: 'q4',
     round: 2,
-    roundTitle: 'Babak 2 – Telusuri Mekanisme',
-    prompt: 'Jika pasokan oksigen di Desa Sel berkurang drastis, tahap respirasi seluler manakah di dalam mitokondria yang paling cepat berhenti dan terdampak paling parah?',
+    roundTitle: 'Babak 2 – Telusuri Mesin Pembangkit',
+    prompt: 'Apa yang terjadi pada pembangkit mitokondria jika pasokan gas Oksigen (O₂) di Desa Sel terhenti?',
     options: [
-      { id: 'a', text: 'Sistem Transpor Elektron dan Fosforilasi Oksidatif, karena oksigen berperan krusial sebagai akseptor elektron terakhir', isCorrect: true },
-      { id: 'b', text: 'Glikolisis, karena glukosa tidak dapat dipecah tanpa oksigen bebas', isCorrect: false },
-      { id: 'c', text: 'Reaksi gelap fotosintesis di matriks luar', isCorrect: false },
-      { id: 'd', text: 'Replikasi DNA mitokondria', isCorrect: false },
+      { id: 'a', text: 'Rantai transpor elektron macet dan produksi ATP anjlok drastis', isCorrect: true },
+      { id: 'b', text: 'Produksi energi justru meningkat dua kali lipat', isCorrect: false },
+      { id: 'c', text: 'Sel langsung membelah diri menjadi dua sel baru', isCorrect: false },
+      { id: 'd', text: 'Glukosa terbakar lebih cepat tanpa sisa limbah', isCorrect: false },
     ],
-    explanation: 'Pada rantai transpor elektron, gas oksigen (O2) bertindak sebagai akseptor elektron terakhir yang mengikat proton menjadi H2O. Tanpa oksigen, aliran elektron macet, gradien proton runtuh, dan ATP sintase berhenti berputar.'
+    explanation: 'Gas oksigen (O2) berperan krusial sebagai penangkap elektron terakhir di rantai transpor elektron. Tanpa oksigen, aliran elektron macet dan turbin ATP Sintase berhenti berputar.'
   },
   {
     id: 'q5',
     round: 2,
-    roundTitle: 'Babak 2 – Telusuri Mekanisme',
-    prompt: 'Mengapa molekul Adenosin Trifosfat (ATP) secara universal dijuluki sebagai "mata uang energi" sel?',
+    roundTitle: 'Babak 2 – Telusuri Mesin Pembangkit',
+    prompt: 'Mengapa molekul ATP sering diibaratkan sebagai "Mata Uang Energi" bagi organel di Desa Sel?',
     options: [
-      { id: 'a', text: 'Karena pemutusan ikatan fosfat berenergi tingginya melepaskan energi bebas yang siap langsung digunakan ("dibelanjakan") untuk reaksi seluler', isCorrect: true },
-      { id: 'b', text: 'Karena ATP adalah molekul paling langka yang hanya diproduksi sekali selama siklus hidup sel', isCorrect: false },
-      { id: 'c', text: 'Karena ATP disimpan secara permanen di dalam dinding sel tanpa pernah dihidrolisis', isCorrect: false },
-      { id: 'd', text: 'Karena ATP hanya berfungsi mengangkut mineral antar sel bertetangga', isCorrect: false },
+      { id: 'a', text: 'Karena ikatannya mudah melepaskan energi siap pakai seketika saat dibutuhkan organel', isCorrect: true },
+      { id: 'b', text: 'Karena ATP hanya bisa dibuat satu kali seumur hidup sel', isCorrect: false },
+      { id: 'c', text: 'Karena ATP disimpan rapat di inti sel dan tidak boleh dibelanjakan', isCorrect: false },
+      { id: 'd', text: 'Karena ATP hanya berfungsi sebagai bahan penyusun dinding sel', isCorrect: false },
     ],
-    explanation: 'ATP menyimpan energi kimia potensial tinggi pada ikatan fosfoanhidrida antara gugus fosfat kedua dan ketiga. Hidrolisis ATP menjadi ADP + Pi membebaskan energi ~30.5 kJ/mol yang secara langsung menggerakkan reaksi kimia seluler.'
+    explanation: 'Pemutusan satu ikatan fosfat pada ATP menjadi ADP membebaskan energi siap pakai seketika yang langsung dapat dibelanjakan oleh organel sel untuk bekerja.'
   },
 
-  // Babak 3 – Prediksi Dampak Sistemik (2 Soal HOTS)
+  // Babak 3 – Prediksi Dampak Sistemik & Tantangan Matematika (2 Soal)
   {
     id: 'q6',
     round: 3,
-    roundTitle: 'Babak 3 – Prediksi Dampak Sistemik (HOTS)',
-    prompt: 'Berdasarkan peta aliran energi sistemik Desa Sel, fasilitas manakah yang akan mengalami penurunan fungsi operasional paling awal ketika pasokan ATP anjlok, dan mengapa?',
+    roundTitle: 'Babak 3 – Perhitungan Matematika Daya Desa Sel',
+    prompt: '⚡ [Tantangan Matematika Daya Desa Sel]: Fasilitas Desa Sel membutuhkan energi darurat total sebesar 300 hingga 320 ATP agar seluruh lampu dan mesin menyala normal. Jika pembakaran 1 molekul glukosa secara aerob menghasilkan 30 sampai 32 ATP, berapakah jumlah molekul glukosa yang harus dipecah oleh mitokondria?',
     options: [
-      { id: 'a', text: 'Pusat Produksi (RE) dan Jalur Distribusi (Badan Golgi), karena proses sintesis makromolekul dan transpor vesikel aktif menuntut asupan ATP tinggi secara terus-menerus', isCorrect: true },
-      { id: 'b', text: 'Gerbang Desa saja, karena transpor pasif membutuhkan seluruh simpanan energi cadangan', isCorrect: false },
-      { id: 'c', text: 'Balai Desa saja, karena kromosom langsung menghilang ketika tegangan berkurang', isCorrect: false },
-      { id: 'd', text: 'Tidak ada fasilitas yang terdampak karena setiap organel menghasilkan energi sendiri', isCorrect: false },
+      { id: 'a', text: '10 molekul glukosa (menghasilkan tepat 300 s.d. 320 ATP)', isCorrect: true },
+      { id: 'b', text: '5 molekul glukosa (hanya menghasilkan 150 s.d. 160 ATP)', isCorrect: false },
+      { id: 'c', text: '20 molekul glukosa (berlebih 600 s.d. 640 ATP)', isCorrect: false },
+      { id: 'd', text: '30 molekul glukosa (berlebih 900 s.d. 960 ATP)', isCorrect: false },
     ],
-    explanation: 'Retikulum Endoplasma (pelipatan protein, kontrol kualitas) dan Badan Golgi (modifikasi, pengemasan vesikel bermotor dynein/kinesin) merupakan konsumen ATP terbesar di sitoplasma. Saat ATP turun, aliran vesikel sekretori terhenti.'
+    explanation: 'Kunci Jawaban: Opsi A (10 molekul glukosa). Cara Menghitung: Nilai minimum = 300 ATP ÷ 30 ATP/glukosa = 10 glukosa; Nilai maksimum = 320 ATP ÷ 32 ATP/glukosa = 10 glukosa. Jadi, mitokondria membutuhkan tepat 10 molekul glukosa untuk menyalakan Desa Sel!'
   },
   {
     id: 'q7',
     round: 3,
-    roundTitle: 'Babak 3 – Prediksi Dampak Sistemik (HOTS)',
-    prompt: 'Jika Desa Sel terpaksa beralih mengandalkan mekanisme darurat respirasi anaerob (fermentasi) dalam waktu yang lama, apa konsekuensi biologis berbahaya yang terjadi?',
+    roundTitle: 'Babak 3 – Perhitungan Matematika Daya Desa Sel',
+    prompt: 'Jika Desa Sel kehabisan oksigen dan terpaksa menggunakan jalur darurat tanpa oksigen (respirasi anaerob/fermentasi), mengapa cara ini sangat merugikan desa?',
     options: [
-      { id: 'a', text: 'Rendahnya efisiensi energi (hanya 2 ATP per glukosa) disertai akumulasi asam laktat/produk samping yang mengasamkan sitoplasma dan merusak enzim', isCorrect: true },
-      { id: 'b', text: 'Peningkatan produksi energi hingga 100 ATP namun sel kehilangan seluruh membran inti', isCorrect: false },
-      { id: 'c', text: 'Mitokondria berubah menjadi vakuola raksasa yang menelan seluruh organel', isCorrect: false },
-      { id: 'd', text: 'Seluruh DNA terfragmentasi menjadi ribosom baru secara otomatis', isCorrect: false },
+      { id: 'a', text: 'Hasil energinya sangat sedikit (hanya 2 ATP per glukosa) dan menimbulkan limbah asam laktat yang merusak sel', isCorrect: true },
+      { id: 'b', text: 'Hasil energinya melonjak tinggi menjadi 100 ATP per glukosa', isCorrect: false },
+      { id: 'c', text: 'Inti sel langsung menghilang secara misterius', isCorrect: false },
+      { id: 'd', text: 'Desa Sel langsung kelebihan energi listrik tanpa batas', isCorrect: false },
     ],
-    explanation: 'Respirasi anaerob hanya memanen 2 ATP dari glikolisis (jauh dibanding 36-38 ATP pada respirasi aerob). Selain itu, akumulasi asam laktat menyebabkan asidosis seluler yang mendenaturasi protein dan mematikan fungsi sel.'
+    explanation: 'Respirasi anaerob di sitoplasma hanya menghasilkan 2 ATP per glukosa (jauh lebih sedikit dibanding 30-32 ATP di mitokondria) serta menimbun asam laktat yang dapat menurunkan pH dan meracuni sel.'
   },
 ];
+
+/* ========================================================================= */
+/* KOMPONEN ANIMASI INTERAKTIF: GENERATOR GLUKOSA -> ATP DESA SEL           */
+/* ========================================================================= */
+interface GlucoseEnergySimulatorProps {
+  initialGlucose?: number;
+}
+
+export const GlucoseEnergySimulator: React.FC<GlucoseEnergySimulatorProps> = ({ initialGlucose = 10 }) => {
+  const [glucoseCount, setGlucoseCount] = useState<number>(initialGlucose);
+  const minAtp = glucoseCount * 30;
+  const maxAtp = glucoseCount * 32;
+  const targetMin = 300;
+  const targetMax = 320;
+  const isTargetMet = glucoseCount >= 10;
+  const isTargetExact = glucoseCount === 10;
+  const percentFulfillment = Math.min(100, Math.round((minAtp / targetMin) * 100));
+
+  // Kecepatan putar turbin (makin banyak glukosa makin cepat berputar)
+  const spinSpeed = Math.max(0.6, 5 / glucoseCount);
+
+  return (
+    <div className="bg-gradient-to-b from-slate-900 via-[#042421] to-slate-950 rounded-3xl p-4 sm:p-6 border-2 border-teal-500/50 shadow-2xl space-y-4 select-none">
+      {/* Header Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-teal-500/25 pb-3">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-400/50 flex items-center justify-center text-amber-300 shadow">
+            <Zap className="w-5 h-5 animate-pulse" />
+          </div>
+          <div>
+            <h3 className="text-sm sm:text-base font-extrabold text-amber-200 flex items-center gap-2 font-fredoka">
+              <span>Simulator Animasi: Generator Glukosa ➔ Energi ATP Desa Sel</span>
+            </h3>
+            <p className="text-xs text-slate-300">
+              Uji coba konversi 1 Glukosa menghasilkan 30–32 ATP untuk menyalakan fasilitas Desa Sel
+            </p>
+          </div>
+        </div>
+
+        {/* Live Status Pill */}
+        <div className="flex items-center gap-2 bg-slate-900/90 px-3 py-1.5 rounded-2xl border border-teal-500/40 self-start sm:self-auto">
+          <span className="text-[11px] font-semibold text-slate-300">Status Desa:</span>
+          <span className={`text-[11px] font-black px-2.5 py-0.5 rounded-full border ${
+            isTargetExact
+              ? 'bg-emerald-500/20 border-emerald-400 text-emerald-300 animate-pulse'
+              : isTargetMet
+              ? 'bg-teal-500/20 border-teal-400 text-teal-300'
+              : 'bg-amber-500/20 border-amber-400 text-amber-300'
+          }`}>
+            {isTargetExact ? '⭐ Target Tepat 100%' : isTargetMet ? '⚡ Surplus Energi' : '⚠️ Daya Kurang'}
+          </span>
+        </div>
+      </div>
+
+      {/* Main Visual Animation Canvas (SVG) */}
+      <div className="relative w-full rounded-2xl overflow-hidden border border-teal-500/40 bg-slate-950/95 shadow-inner">
+        <svg viewBox="0 0 840 280" className="w-full h-full object-contain">
+          <defs>
+            <linearGradient id="simMitoOuter" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#0d9488" />
+              <stop offset="100%" stopColor="#042f2e" />
+            </linearGradient>
+            <linearGradient id="simMitoMatrix" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#78350f" />
+              <stop offset="100%" stopColor="#291102" />
+            </linearGradient>
+            <linearGradient id="simGlucoseGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#84cc16" />
+              <stop offset="100%" stopColor="#10b981" />
+            </linearGradient>
+            <filter id="simGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
+
+          {/* Background Circuit Lines */}
+          <line x1="180" y1="140" x2="310" y2="140" stroke="#14b8a6" strokeWidth="4" strokeDasharray="8 4" opacity="0.6" />
+          <line x1="490" y1="140" x2="620" y2="140" stroke="#f59e0b" strokeWidth="4" strokeDasharray="8 4" opacity="0.8" />
+
+          {/* ================= SECTION 1: INPUT GLUKOSA (KIRI) ================= */}
+          <g transform="translate(10, 15)">
+            <rect x="10" y="20" width="160" height="210" rx="16" fill="#042f2e" fillOpacity="0.4" stroke="#14b8a6" strokeWidth="2" strokeDasharray="6 4" />
+            <text x="90" y="44" fill="#5eead4" fontSize="11" fontWeight="bold" textAnchor="middle">
+              Silo Bahan Makanan
+            </text>
+            <text x="90" y="60" fill="#a7f3d0" fontSize="12" fontWeight="black" textAnchor="middle">
+              {glucoseCount} Glukosa (C₆H₁₂O₆)
+            </text>
+
+            {/* Render Glucose Molecules as Hexagons */}
+            {Array.from({ length: Math.min(10, glucoseCount) }).map((_, i) => {
+              const col = i % 3;
+              const row = Math.floor(i / 3);
+              const cx = 50 + col * 40;
+              const cy = 90 + row * 40;
+              return (
+                <g key={i} className="animate-pulse" style={{ animationDelay: `${i * 150}ms` }}>
+                  <polygon
+                    points={`${cx},${cy - 12} ${cx + 11},${cy - 6} ${cx + 11},${cy + 6} ${cx},${cy + 12} ${cx - 11},${cy + 6} ${cx - 11},${cy - 6}`}
+                    fill="url(#simGlucoseGrad)"
+                    stroke="#bef264"
+                    strokeWidth="1.5"
+                    filter="url(#simGlow)"
+                  />
+                  <circle cx={cx} cy={cy} r="3" fill="#ffffff" />
+                </g>
+              );
+            })}
+
+            {glucoseCount > 10 && (
+              <text x="90" y="215" fill="#facc15" fontSize="10" fontWeight="bold" textAnchor="middle">
+                +{glucoseCount - 10} molekul tambahan
+              </text>
+            )}
+
+            <path d="M 170 140 L 195 140" stroke="#34d399" strokeWidth="4" />
+          </g>
+
+          {/* ================= SECTION 2: MITOKONDRIA & TURBIN SINTASE (TENGAH) ================= */}
+          <g transform="translate(400, 140)">
+            <ellipse cx="0" cy="0" rx="130" ry="85" fill="url(#simMitoOuter)" stroke="#2dd4bf" strokeWidth="3" />
+            <ellipse cx="0" cy="0" rx="105" ry="65" fill="url(#simMitoMatrix)" stroke="#f59e0b" strokeWidth="2" />
+
+            <path d="M -90 -20 C -70 -50 -50 0 -30 -30 C -10 -50 10 0 30 -30 C 50 -50 70 0 90 -20" fill="none" stroke="#fbbf24" strokeWidth="2.5" opacity="0.4" />
+            <path d="M -90 20 C -70 50 -50 0 -30 30 C -10 50 10 0 30 30 C 50 50 70 0 90 20" fill="none" stroke="#fbbf24" strokeWidth="2.5" opacity="0.4" />
+
+            {/* Central Rotary Turbine (ATP Synthase) with dynamic spinning speed */}
+            <g style={{ animation: `spin ${spinSpeed}s linear infinite`, transformOrigin: '0px 0px' }}>
+              <circle cx="0" cy="0" r="32" fill="#0f172a" stroke="#f59e0b" strokeWidth="3" />
+              {[0, 60, 120, 180, 240, 300].map((deg) => (
+                <line
+                  key={deg}
+                  x1="0"
+                  y1="0"
+                  x2={28 * Math.cos((deg * Math.PI) / 180)}
+                  y2={28 * Math.sin((deg * Math.PI) / 180)}
+                  stroke="#fde047"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                />
+              ))}
+              <circle cx="0" cy="0" r="10" fill="#dc2626" filter="url(#simGlow)" />
+            </g>
+
+            {/* Spark Indicators */}
+            <g transform="translate(-45, -45)">
+              <polygon points="0,0 8,-12 3,-12 7,-22 -1,-10 4,-10" fill="#facc15" filter="url(#simGlow)" />
+            </g>
+            <g transform="translate(45, 45)">
+              <polygon points="0,0 8,-12 3,-12 7,-22 -1,-10 4,-10" fill="#facc15" filter="url(#simGlow)" />
+            </g>
+
+            <text x="0" y="52" fill="#fde047" fontSize="10" fontWeight="black" textAnchor="middle">
+              Turbin ATP Sintase
+            </text>
+            <text x="0" y="66" fill="#a7f3d0" fontSize="9" fontWeight="bold" textAnchor="middle">
+              (1 Glukosa ➔ 30–32 ATP)
+            </text>
+          </g>
+
+          {/* ================= SECTION 3: DESA SEL & FASILITAS (KANAN) ================= */}
+          <g transform="translate(610, 15)">
+            <rect x="10" y="20" width="200" height="210" rx="16" fill="#020617" fillOpacity="0.6" stroke={isTargetMet ? '#10b981' : '#f59e0b'} strokeWidth="2" />
+            
+            <text x="110" y="44" fill={isTargetMet ? '#34d399' : '#fde047'} fontSize="11" fontWeight="black" textAnchor="middle">
+              Fasilitas Desa Sel
+            </text>
+            <text x="110" y="60" fill="#cbd5e1" fontSize="10" textAnchor="middle">
+              Kebutuhan: 300–320 ATP
+            </text>
+
+            {/* 1. Balai Nukleus */}
+            <g transform="translate(30, 80)">
+              <rect x="0" y="10" width="36" height="34" rx="4" fill={isTargetMet ? '#047857' : glucoseCount >= 5 ? '#854d0e' : '#334155'} stroke={isTargetMet ? '#34d399' : '#64748b'} strokeWidth="1.5" />
+              <polygon points="18,0 -4,12 40,12" fill={isTargetMet ? '#059669' : '#1e293b'} />
+              <circle cx="18" cy="24" r="5" fill={isTargetMet ? '#fef08a' : glucoseCount >= 5 ? '#f59e0b' : '#0f172a'} filter={isTargetMet ? 'url(#simGlow)' : undefined} />
+              <text x="18" y="54" fill="#94a3b8" fontSize="8" textAnchor="middle">Nukleus</text>
+            </g>
+
+            {/* 2. Pabrik Protein RE */}
+            <g transform="translate(85, 80)">
+              <rect x="0" y="12" width="36" height="32" rx="4" fill={isTargetMet ? '#047857' : glucoseCount >= 5 ? '#854d0e' : '#334155'} stroke={isTargetMet ? '#34d399' : '#64748b'} strokeWidth="1.5" />
+              <polygon points="18,2 -2,14 38,14" fill={isTargetMet ? '#059669' : '#1e293b'} />
+              <circle cx="18" cy="24" r="5" fill={isTargetMet ? '#fef08a' : glucoseCount >= 5 ? '#f59e0b' : '#0f172a'} filter={isTargetMet ? 'url(#simGlow)' : undefined} />
+              <text x="18" y="54" fill="#94a3b8" fontSize="8" textAnchor="middle">Pabrik RE</text>
+            </g>
+
+            {/* 3. Pusat Distribusi Golgi */}
+            <g transform="translate(140, 80)">
+              <rect x="0" y="10" width="36" height="34" rx="4" fill={isTargetMet ? '#047857' : glucoseCount >= 5 ? '#854d0e' : '#334155'} stroke={isTargetMet ? '#34d399' : '#64748b'} strokeWidth="1.5" />
+              <polygon points="18,0 -4,12 40,12" fill={isTargetMet ? '#059669' : '#1e293b'} />
+              <circle cx="18" cy="24" r="5" fill={isTargetMet ? '#fef08a' : glucoseCount >= 5 ? '#f59e0b' : '#0f172a'} filter={isTargetMet ? 'url(#simGlow)' : undefined} />
+              <text x="18" y="54" fill="#94a3b8" fontSize="8" textAnchor="middle">Golgi</text>
+            </g>
+
+            {/* 4. Gerbang Membran Sel */}
+            <g transform="translate(45, 148)">
+              <rect x="0" y="5" width="110" height="24" rx="6" fill={isTargetMet ? '#065f46' : glucoseCount >= 5 ? '#713f12' : '#1e293b'} stroke={isTargetMet ? '#10b981' : '#475569'} strokeWidth="1.5" />
+              <line x1="20" y1="5" x2="20" y2="29" stroke="#94a3b8" strokeWidth="2" />
+              <line x1="55" y1="5" x2="55" y2="29" stroke="#94a3b8" strokeWidth="2" />
+              <line x1="90" y1="5" x2="90" y2="29" stroke="#94a3b8" strokeWidth="2" />
+              <text x="55" y="42" fill="#cbd5e1" fontSize="9" fontWeight="bold" textAnchor="middle">Gerbang Membran & Pompa Ion</text>
+            </g>
+
+            {/* Village Lighting Status Banner */}
+            <g transform="translate(110, 214)">
+              <rect x="-85" y="-14" width="170" height="22" rx="8" fill={isTargetMet ? '#059669' : '#b45309'} opacity="0.95" />
+              <text x="0" y="1" fill="#ffffff" fontSize="9" fontWeight="black" textAnchor="middle">
+                {isTargetMet ? '✓ SELURUH DESA MENYALA 100%' : '⚠️ SEBAGIAN MASIH GELAP'}
+              </text>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      {/* Interactive Controls & Live Mathematics Display */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
+        {/* Left: Interactive Glukosa Input Controls */}
+        <div className="p-4 rounded-2xl bg-slate-900/80 border border-teal-500/30 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-extrabold text-teal-200 flex items-center gap-1.5">
+              <FlaskConical className="w-4 h-4 text-emerald-400" />
+              <span>Atur Pasokan Bahan Makanan (Glukosa):</span>
+            </span>
+            <span className="text-xs font-black text-amber-300 bg-amber-400/10 px-2.5 py-0.5 rounded-lg border border-amber-400/30">
+              {glucoseCount} Molekul
+            </span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              disabled={glucoseCount <= 1}
+              onClick={() => {
+                sfx.playClick();
+                setGlucoseCount(prev => Math.max(1, prev - 1));
+              }}
+              className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-200 font-black text-lg flex items-center justify-center border border-slate-600 transition-all cursor-pointer active:scale-95"
+            >
+              -
+            </button>
+
+            <input
+              type="range"
+              min="1"
+              max="15"
+              value={glucoseCount}
+              onChange={(e) => {
+                setGlucoseCount(Number(e.target.value));
+              }}
+              className="flex-1 accent-teal-400 cursor-pointer h-2 bg-slate-700 rounded-lg"
+            />
+
+            <button
+              type="button"
+              disabled={glucoseCount >= 15}
+              onClick={() => {
+                sfx.playClick();
+                setGlucoseCount(prev => Math.min(15, prev + 1));
+              }}
+              className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-200 font-black text-lg flex items-center justify-center border border-slate-600 transition-all cursor-pointer active:scale-95"
+            >
+              +
+            </button>
+          </div>
+
+          {/* Quick Preset Buttons */}
+          <div className="flex flex-wrap gap-2 pt-1">
+            <button
+              type="button"
+              onClick={() => {
+                sfx.playClick();
+                setGlucoseCount(1);
+              }}
+              className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer border ${
+                glucoseCount === 1 ? 'bg-teal-500/20 border-teal-400 text-teal-200' : 'bg-slate-800/80 border-slate-700 text-slate-300'
+              }`}
+            >
+              1 Glukosa (Standar 30-32 ATP)
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                sfx.playClick();
+                setGlucoseCount(5);
+              }}
+              className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer border ${
+                glucoseCount === 5 ? 'bg-amber-500/20 border-amber-400 text-amber-200' : 'bg-slate-800/80 border-slate-700 text-slate-300'
+              }`}
+            >
+              5 Glukosa (150-160 ATP)
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                sfx.playClick();
+                setGlucoseCount(10);
+              }}
+              className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer border ${
+                glucoseCount === 10 ? 'bg-emerald-500/30 border-emerald-400 text-emerald-200 ring-2 ring-emerald-400/40' : 'bg-emerald-950/50 border-emerald-500/50 text-emerald-300'
+              }`}
+            >
+              ⭐ 10 Glukosa (Target Desa: 300–320 ATP)
+            </button>
+          </div>
+        </div>
+
+        {/* Right: Live Calculation & Progress Bar */}
+        <div className="p-4 rounded-2xl bg-slate-900/80 border border-teal-500/30 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-extrabold text-amber-300 flex items-center gap-1.5">
+              <Calculator className="w-4 h-4 text-amber-400" />
+              <span>Perhitungan Daya Berjalan:</span>
+            </span>
+            <span className="text-xs font-mono font-bold text-teal-300">
+              Target: 300–320 ATP
+            </span>
+          </div>
+
+          {/* Mathematical Equation Display Box */}
+          <div className="p-2.5 rounded-xl bg-slate-950 border border-teal-500/30 font-mono text-center text-xs sm:text-sm">
+            <span className="text-emerald-300 font-bold">{glucoseCount} Glukosa</span>
+            <span className="text-slate-400"> × </span>
+            <span className="text-sky-300 font-bold">(30 s.d. 32 ATP)</span>
+            <span className="text-slate-400"> = </span>
+            <span className={`font-black ${isTargetExact ? 'text-emerald-400' : isTargetMet ? 'text-teal-300' : 'text-amber-400'}`}>
+              {minAtp} s.d. {maxAtp} ATP
+            </span>
+          </div>
+
+          {/* Progress Bar of Desa Requirement */}
+          <div className="space-y-1">
+            <div className="flex justify-between text-[10px] text-slate-400 font-semibold">
+              <span>Pemenuhan Daya Desa:</span>
+              <span className={isTargetMet ? 'text-emerald-300 font-bold' : 'text-amber-300'}>
+                {percentFulfillment}% ({minAtp}/300 ATP Minimum)
+              </span>
+            </div>
+            <div className="w-full h-3 rounded-full bg-slate-800 overflow-hidden p-0.5 border border-slate-700">
+              <div
+                className={`h-full rounded-full transition-all duration-500 ${
+                  isTargetExact
+                    ? 'bg-gradient-to-r from-emerald-500 to-teal-400 shadow-[0_0_12px_rgba(16,185,129,0.8)]'
+                    : isTargetMet
+                    ? 'bg-gradient-to-r from-teal-500 to-emerald-400'
+                    : 'bg-gradient-to-r from-amber-500 to-orange-500'
+                }`}
+                style={{ width: `${percentFulfillment}%` }}
+              />
+            </div>
+          </div>
+
+          {/* Informational Guidance Text */}
+          <div className="text-[11px] leading-relaxed">
+            {isTargetExact ? (
+              <span className="text-emerald-300 font-bold flex items-center gap-1">
+                <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" />
+                <span>Tepat Sekali! 10 molekul glukosa menghasilkan 300–320 ATP, menyalakan seluruh fasilitas Desa Sel!</span>
+              </span>
+            ) : isTargetMet ? (
+              <span className="text-teal-300 font-semibold flex items-center gap-1">
+                <Sparkles className="w-3.5 h-3.5 flex-shrink-0 text-amber-400" />
+                <span>Daya melimpah! Desa Sel memiliki cadangan energi lebih dari cukup.</span>
+              </span>
+            ) : (
+              <span className="text-amber-300 font-semibold flex items-center gap-1">
+                <AlertTriangle className="w-3.5 h-3.5 flex-shrink-0 text-orange-400" />
+                <span>Daya masih kurang {targetMin - minAtp} ATP. Tambahkan glukosa hingga mencapai 10 molekul!</span>
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 type SceneStep = 'video' | 'scene1' | 'scene2' | 'scene3' | 'scene4' | 'scene5' | 'summary';
 
@@ -512,11 +893,11 @@ export const Level4EnergyCrisis: React.FC<Level4EnergyCrisisProps> = ({
                   <Microscope className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-sm sm:text-base font-extrabold text-emerald-200 flex items-center gap-2">
-                    <span>Misi Investigasi: Diagnosis Patologi Kerusakan Seluler Nyata</span>
+                  <h3 className="text-sm sm:text-base font-extrabold text-emerald-200 flex items-center gap-2 font-fredoka">
+                    <span>Misi Penyelidikan: Temukan Penyebab Padamnya Listrik Desa Sel</span>
                   </h3>
                   <p className="text-xs text-slate-300">
-                    Lakukan 3 langkah penyelidikan sitologi di bawah untuk mengidentifikasi akar krisis energi:
+                    Ikuti 3 langkah mudah berikut untuk menyelidiki kerusakan organel akibat ketiadaan pasokan ATP:
                   </p>
                 </div>
               </div>
@@ -541,10 +922,10 @@ export const Level4EnergyCrisis: React.FC<Level4EnergyCrisisProps> = ({
               }`}>
                 <div className="flex items-center gap-2 mb-1.5">
                   <span className="w-6 h-6 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-300 text-xs font-black flex items-center justify-center">1</span>
-                  <span className="text-xs font-bold text-emerald-200">Periksa 3 Sampel Organel</span>
+                  <span className="text-xs font-bold text-emerald-200">Periksa 3 Organel</span>
                 </div>
                 <p className="text-[11px] text-slate-300 leading-relaxed">
-                  Klik kartu <strong>Mitokondria</strong>, <strong>Ribosom & RE</strong>, dan <strong>Membran Plasma</strong> di bawah untuk memindai bukti kerusakan sitologis nyata.
+                  Klik kartu <strong>Mitokondria</strong>, <strong>RE & Ribosom</strong>, dan <strong>Membran Sel</strong> untuk melihat kondisi fisiknya saat kehabisan energi.
                 </p>
               </div>
 
@@ -553,10 +934,10 @@ export const Level4EnergyCrisis: React.FC<Level4EnergyCrisisProps> = ({
               }`}>
                 <div className="flex items-center gap-2 mb-1.5">
                   <span className="w-6 h-6 rounded-full bg-teal-500/20 border border-teal-400 text-teal-300 text-xs font-black flex items-center justify-center">2</span>
-                  <span className="text-xs font-bold text-teal-200">Pelajari Data Mikroskopik</span>
+                  <span className="text-xs font-bold text-teal-200">Buka Inspeksi 3D</span>
                 </div>
                 <p className="text-[11px] text-slate-300 leading-relaxed">
-                  Klik tombol <em>"Inspeksi Mikroskop 3D"</em> untuk melihat foto makro: kolaps potensial krista (ΔΨm), macetnya translasi protein, dan kebocoran ion.
+                  Gunakan tombol <em>"Inspeksi Mikroskop 3D"</em> untuk melihat foto visual nyata: lipatan krista yang kolaps, translasi protein macet, dan kebocoran ion.
                 </p>
               </div>
 
@@ -565,10 +946,10 @@ export const Level4EnergyCrisis: React.FC<Level4EnergyCrisisProps> = ({
               }`}>
                 <div className="flex items-center gap-2 mb-1.5">
                   <span className="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-400 text-amber-300 text-xs font-black flex items-center justify-center">3</span>
-                  <span className="text-xs font-bold text-amber-200">Jawab 2 Soal Diagnosis</span>
+                  <span className="text-xs font-bold text-amber-200">Jawab 2 Soal Mudah</span>
                 </div>
                 <p className="text-[11px] text-slate-300 leading-relaxed">
-                  Pilih opsi jawaban yang tepat pada pertanyaan di bawah untuk membuktikan pemahaman biologi dan membuka akses ke <strong>Babak 2: Mekanisme Mitokondria</strong>.
+                  Pilih jawaban yang tepat untuk membuktikan pemahaman Anda dan membuka akses ke <strong>Babak 2: Mesin Pembangkit</strong>.
                 </p>
               </div>
             </div>
@@ -1519,14 +1900,18 @@ export const Level4EnergyCrisis: React.FC<Level4EnergyCrisisProps> = ({
             </div>
           </div>
 
-          {/* Interactive Question Panel (2 Soal HOTS Babak 3) */}
+          {/* Simulator Animasi Interaktif: Glukosa -> ATP Desa Sel */}
+          <GlucoseEnergySimulator initialGlucose={10} />
+
+          {/* Interactive Question Panel (2 Soal Babak 3) */}
           <div className="bg-slate-900/90 rounded-3xl p-5 sm:p-6 border border-teal-500/40 space-y-4">
             <div className="flex items-center justify-between border-b border-slate-700 pb-3">
               <span className="text-xs font-black uppercase text-amber-300 bg-amber-400/10 px-2.5 py-1 rounded-lg border border-amber-400/30">
                 Pertanyaan {scene5CurrentQ + 1} dari 2
               </span>
-              <span className="text-xs text-orange-300 font-semibold">
-                Babak 3: Prediksi Dampak Sistemik (HOTS)
+              <span className="text-xs text-orange-300 font-semibold flex items-center gap-1.5">
+                <Calculator className="w-3.5 h-3.5 text-amber-400" />
+                <span>Babak 3: Perhitungan Daya Desa Sel & Dampak Sistemik</span>
               </span>
             </div>
 
@@ -1539,6 +1924,13 @@ export const Level4EnergyCrisis: React.FC<Level4EnergyCrisisProps> = ({
 
               return (
                 <div className="space-y-4">
+                  {currentQ.id === 'q6' && (
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-gradient-to-r from-amber-500/20 to-teal-500/20 border border-amber-400/40 text-amber-300 text-xs font-black shadow mb-1">
+                      <Calculator className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+                      <span>Tantangan Perhitungan Matematika Biologi Terapan</span>
+                    </div>
+                  )}
+
                   <h3 className="text-sm sm:text-base font-bold text-slate-100 font-fredoka leading-snug">
                     {currentQ.prompt}
                   </h3>
@@ -1582,12 +1974,36 @@ export const Level4EnergyCrisis: React.FC<Level4EnergyCrisisProps> = ({
 
                   {/* Feedback explanation box */}
                   {isFeedbackShown && (
-                    <div className="p-3.5 rounded-2xl bg-orange-950/40 border border-orange-500/40 text-xs text-orange-200 space-y-1">
-                      <div className="font-bold flex items-center gap-1.5 text-amber-300">
-                        <Sparkles className="w-3.5 h-3.5" />
-                        <span>Analisis Tingkat Lanjut (HOTS):</span>
-                      </div>
-                      <p className="leading-relaxed">{currentQ.explanation}</p>
+                    <div className="space-y-3">
+                      {currentQ.id === 'q6' ? (
+                        <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-950/90 via-teal-950/80 to-slate-900 border-2 border-emerald-400/60 text-xs space-y-2.5 shadow-xl">
+                          <div className="flex items-center gap-2 text-emerald-300 font-extrabold text-sm">
+                            <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                            <span>Kunci Jawaban Resmi: Opsi A (10 Molekul Glukosa)</span>
+                          </div>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono">
+                            <div className="p-2.5 rounded-xl bg-slate-900/90 border border-emerald-500/40 text-emerald-200">
+                              <div className="text-[10px] text-slate-400 font-sans font-semibold">Perhitungan Batas Bawah:</div>
+                              <div className="mt-0.5">300 ATP ÷ 30 ATP/glukosa = <strong className="text-amber-300 text-xs font-black">10 Glukosa</strong></div>
+                            </div>
+                            <div className="p-2.5 rounded-xl bg-slate-900/90 border border-teal-500/40 text-teal-200">
+                              <div className="text-[10px] text-slate-400 font-sans font-semibold">Perhitungan Batas Atas:</div>
+                              <div className="mt-0.5">320 ATP ÷ 32 ATP/glukosa = <strong className="text-amber-300 text-xs font-black">10 Glukosa</strong></div>
+                            </div>
+                          </div>
+                          <p className="text-[11px] text-emerald-100 leading-relaxed font-sans">
+                            💡 <strong>Rumus Biologi:</strong> 1 molekul glukosa menghasilkan rentang <strong>30 hingga 32 ATP</strong> melalui respirasi aerob sempurna. Untuk memenuhi kebutuhan energi Desa Sel sebesar <strong>300 s.d. 320 ATP</strong>, mitokondria membutuhkan tepat <strong>10 molekul glukosa</strong>!
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="p-3.5 rounded-2xl bg-orange-950/40 border border-orange-500/40 text-xs text-orange-200 space-y-1">
+                          <div className="font-bold flex items-center gap-1.5 text-amber-300">
+                            <Sparkles className="w-3.5 h-3.5" />
+                            <span>Analisis Biokimia Sel:</span>
+                          </div>
+                          <p className="leading-relaxed">{currentQ.explanation}</p>
+                        </div>
+                      )}
                     </div>
                   )}
 

@@ -9,7 +9,8 @@
     "start": "node dist/server.mjs",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "git:save": "git add -A && git commit -m \"chore: simpan permanen seluruh aset dan pembaruan\""
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

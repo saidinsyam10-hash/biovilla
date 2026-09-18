@@ -1,0 +1,82 @@
+[
+  {
+    "id": "sync_1789746189857_se5u2",
+    "timestamp": "2026-09-18T15:43:09.857Z",
+    "studentId": "siswa",
+    "studentName": "Budi Santoso",
+    "status": "failed",
+    "message": "Google Sheets belum dikonfigurasi (Spreadsheet ID & Service Account Email/Private Key diperlukan). Data tetap tersimpan aman di Firestore.",
+    "predikat": "Warga Peduli Desa Sel",
+    "persen": 47
+  },
+  {
+    "id": "sync_1789743380577_8xzjb",
+    "timestamp": "2026-09-18T14:56:20.577Z",
+    "studentId": "siswa",
+    "studentName": "Budi Santoso",
+    "status": "failed",
+    "message": "Google Sheets belum dikonfigurasi (Spreadsheet ID & Service Account Email/Private Key diperlukan). Data tetap tersimpan aman di Firestore.",
+    "predikat": "Warga Peduli Desa Sel",
+    "persen": 49
+  },
+  {
+    "id": "sync_1789743319780_8iwz9",
+    "timestamp": "2026-09-18T14:55:19.780Z",
+    "studentId": "siswa",
+    "studentName": "Budi Santoso",
+    "status": "failed",
+    "message": "Google Sheets belum dikonfigurasi (Spreadsheet ID & Service Account Email/Private Key diperlukan). Data tetap tersimpan aman di Firestore.",
+    "predikat": "Warga Peduli Desa Sel",
+    "persen": 49
+  },
+  {
+    "id": "sync_1789743314210_d4xd0",
+    "timestamp": "2026-09-18T14:55:14.210Z",
+    "studentId": "siswa",
+    "studentName": "Budi Santoso",
+    "status": "failed",
+    "message": "Google Sheets belum dikonfigurasi (Spreadsheet ID & Service Account Email/Private Key diperlukan). Data tetap tersimpan aman di Firestore.",
+    "predikat": "Warga Peduli Desa Sel",
+    "persen": 49
+  },
+  {
+    "id": "sync_1789743304896_c93di",
+    "timestamp": "2026-09-18T14:55:04.896Z",
+    "studentId": "siswa",
+    "studentName": "Budi Santoso",
+    "status": "failed",
+    "message": "Google Sheets belum dikonfigurasi (Spreadsheet ID & Service Account Email/Private Key diperlukan). Data tetap tersimpan aman di Firestore.",
+    "predikat": "Warga Peduli Desa Sel",
+    "persen": 49
+  },
+  {
+    "id": "sync_1789743294128_nhvp2",
+    "timestamp": "2026-09-18T14:54:54.128Z",
+    "studentId": "siswa",
+    "studentName": "Budi Santoso",
+    "status": "failed",
+    "message": "Google Sheets belum dikonfigurasi (Spreadsheet ID & Service Account Email/Private Key diperlukan). Data tetap tersimpan aman di Firestore.",
+    "predikat": "Warga Peduli Desa Sel",
+    "persen": 49
+  },
+  {
+    "id": "sync_1789743286220_71csd",
+    "timestamp": "2026-09-18T14:54:46.220Z",
+    "studentId": "siswa",
+    "studentName": "Budi Santoso",
+    "status": "failed",
+    "message": "Google Sheets belum dikonfigurasi (Spreadsheet ID & Service Account Email/Private Key diperlukan). Data tetap tersimpan aman di Firestore.",
+    "predikat": "Warga Peduli Desa Sel",
+    "persen": 49
+  },
+  {
+    "id": "sync_1789736143332_1img2",
+    "timestamp": "2026-09-18T12:55:43.332Z",
+    "studentId": "siswa",
+    "studentName": "Budi Santoso",
+    "status": "failed",
+    "message": "Google Sheets belum dikonfigurasi (Spreadsheet ID & Service Account Email/Private Key diperlukan). Data tetap tersimpan aman di Firestore.",
+    "predikat": "Warga Peduli Desa Sel",
+    "persen": 51
+  }
+]

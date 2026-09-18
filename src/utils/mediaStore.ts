@@ -96,18 +96,27 @@ export async function uploadMediaFileServer(
         serverMediaCache[baseKey] = data.url;
       }
 
-      // Try caching into IndexedDB if small (< 25MB), but ignore quota errors
-      if (file.size < 25 * 1024 * 1024) {
-        try {
-          const db = await openDB();
-          await new Promise<void>((resolve) => {
-            const tx = db.transaction(STORE_NAME, 'readwrite');
-            tx.objectStore(STORE_NAME).put(file, key);
-            tx.oncomplete = () => resolve();
-            tx.onerror = () => resolve();
-          });
-        } catch {}
+      // Synchronously record permanent mapping in browser localStorage
+      saveCustomMediaUrl(key, data.url);
+      saveCustomMediaUrl(cleanKey, data.url);
+      if (baseKey && baseKey !== cleanKey) {
+        saveCustomMediaUrl(baseKey, data.url);
       }
+
+      // Cache binary into IndexedDB across all key variants for offline browser persistence
+      try {
+        const db = await openDB();
+        await new Promise<void>((resolve) => {
+          const tx = db.transaction(STORE_NAME, 'readwrite');
+          tx.objectStore(STORE_NAME).put(file, key);
+          tx.objectStore(STORE_NAME).put(file, cleanKey);
+          if (baseKey && baseKey !== cleanKey) {
+            tx.objectStore(STORE_NAME).put(file, baseKey);
+          }
+          tx.oncomplete = () => resolve();
+          tx.onerror = () => resolve();
+        });
+      } catch {}
 
       notifyMediaUpdated();
       return { success: true, url: data.url };
@@ -170,6 +179,14 @@ async function persistToServer(key: string, fileOrDataUrl: Blob | string, filena
         if (baseKey && baseKey !== cleanKey && !baseKey.includes('slide') && !baseKey.includes('hotspot')) {
           serverMediaCache[baseKey] = data.url;
         }
+
+        // Save to browser localStorage mapping for instant persistence
+        saveCustomMediaUrl(key, data.url);
+        saveCustomMediaUrl(cleanKey, data.url);
+        if (baseKey && baseKey !== cleanKey) {
+          saveCustomMediaUrl(baseKey, data.url);
+        }
+
         return data.url;
       }
     }
@@ -216,6 +233,10 @@ export async function saveMediaBlob(key: string, file: Blob, customFilename?: st
       if (uploadResult.success && uploadResult.url) {
         serverMediaCache[key] = uploadResult.url;
         serverMediaCache[cleanKey] = uploadResult.url;
+        if (baseKey !== cleanKey) serverMediaCache[baseKey] = uploadResult.url;
+        saveCustomMediaUrl(key, uploadResult.url);
+        saveCustomMediaUrl(cleanKey, uploadResult.url);
+        if (baseKey !== cleanKey) saveCustomMediaUrl(baseKey, uploadResult.url);
       }
     } catch (err) {
       console.warn('[MediaStore] Video upload server note:', err);
@@ -242,6 +263,7 @@ export async function saveMediaBlob(key: string, file: Blob, customFilename?: st
         const tx = db.transaction(STORE_NAME, 'readwrite');
         tx.objectStore(STORE_NAME).put(blobToSave, key);
         tx.objectStore(STORE_NAME).put(blobToSave, cleanKey);
+        if (baseKey !== cleanKey) tx.objectStore(STORE_NAME).put(blobToSave, baseKey);
         tx.oncomplete = () => resolve();
         tx.onerror = () => resolve(); // Ignore quota errors
       });
@@ -253,6 +275,10 @@ export async function saveMediaBlob(key: string, file: Blob, customFilename?: st
       if (serverUrl) {
         serverMediaCache[key] = serverUrl;
         serverMediaCache[cleanKey] = serverUrl;
+        if (baseKey !== cleanKey) serverMediaCache[baseKey] = serverUrl;
+        saveCustomMediaUrl(key, serverUrl);
+        saveCustomMediaUrl(cleanKey, serverUrl);
+        if (baseKey !== cleanKey) saveCustomMediaUrl(baseKey, serverUrl);
       }
     } catch (persistErr) {
       console.warn('[MediaStore] Server persistence note:', persistErr);
@@ -289,6 +315,29 @@ export function formatVideoEmbed(url: string | null | undefined): { isEmbed: boo
   }
 
   return { isEmbed: false, embedUrl: trimmed };
+}
+
+/**
+ * Konversi otomatis URL gambar eksternal (Google Drive, Dropbox, dll.) menjadi direct image link
+ * agar tidak diblokir browser karena CORS / Hotlinking dan langsung tampil dengan jernih.
+ */
+export function formatImageDirectUrl(url: string | null | undefined): string {
+  if (!url) return '';
+  const trimmed = url.trim();
+
+  // 1. Google Drive direct link conversion
+  const gdriveMatch = trimmed.match(/drive\.google\.com\/(?:file\/d\/([a-zA-Z0-9_-]+)|open\?id=([a-zA-Z0-9_-]+)|uc\?id=([a-zA-Z0-9_-]+))/i);
+  const fileId = gdriveMatch ? (gdriveMatch[1] || gdriveMatch[2] || gdriveMatch[3]) : null;
+  if (fileId) {
+    return `https://lh3.googleusercontent.com/d/${fileId}`;
+  }
+
+  // 2. Dropbox conversion to direct download
+  if (trimmed.includes('dropbox.com')) {
+    return trimmed.replace('?dl=0', '?raw=1').replace('&dl=0', '&raw=1');
+  }
+
+  return trimmed;
 }
 
 export async function deleteMediaBlob(key: string): Promise<void> {
@@ -385,12 +434,28 @@ export function saveCustomMediaUrl(key: string, url: string): void {
     if (typeof window === 'undefined') return;
     const cleanKey = key.replace(/^__MEDIA__/, '').trim();
     const baseKey = cleanKey.replace(/\.[a-zA-Z0-9]+$/, '');
+    const isVideo = url.includes('youtube.com') || url.includes('youtu.be') || /\.(mp4|webm|mov)$/i.test(url);
+    const finalUrl = isVideo ? url.trim() : formatImageDirectUrl(url);
     const data = localStorage.getItem('biovillage_custom_media_urls');
     const parsed = data ? JSON.parse(data) : {};
-    parsed[key] = url;
-    parsed[cleanKey] = url;
-    if (baseKey !== cleanKey) parsed[baseKey] = url;
+    parsed[key] = finalUrl;
+    parsed[cleanKey] = finalUrl;
+    if (baseKey !== cleanKey) parsed[baseKey] = finalUrl;
     localStorage.setItem('biovillage_custom_media_urls', JSON.stringify(parsed));
+
+    // Update in-memory server cache synchronously
+    serverMediaCache[key] = finalUrl;
+    serverMediaCache[cleanKey] = finalUrl;
+    if (baseKey !== cleanKey) serverMediaCache[baseKey] = finalUrl;
+
+    // Sinkronkan ke server manifest secara permanen
+    try {
+      fetch('/api/media/custom-url', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key: cleanKey, url: finalUrl })
+      }).catch(err => console.warn('[MediaStore] Server custom-url sync note:', err));
+    } catch {}
 
     // If it's a data URL, persist permanently to server disk
     if (url.startsWith('data:')) {
@@ -433,8 +498,10 @@ export async function getMediaResolvedURL(key: string): Promise<string | null> {
   if (sessionBlobUrls[baseKey]) return sessionBlobUrls[baseKey];
 
   // 2. Custom URL saved by user (YouTube / Google Drive / External URL)
-  const customUrl = getCustomMediaUrl(cleanKey) || getCustomMediaUrl(baseKey) || getCustomMediaUrl(key);
-  if (customUrl) return customUrl;
+  const rawCustomUrl = getCustomMediaUrl(cleanKey) || getCustomMediaUrl(baseKey) || getCustomMediaUrl(key);
+  if (rawCustomUrl) {
+    return formatImageDirectUrl(rawCustomUrl);
+  }
 
   // 3. Local browser IndexedDB persistence
   const blob = await getMediaBlob(cleanKey) || (baseKey !== cleanKey ? await getMediaBlob(baseKey) : null) || await getMediaBlob(key);
@@ -444,10 +511,10 @@ export async function getMediaResolvedURL(key: string): Promise<string | null> {
     return url;
   }
 
-  // 4. Permanent server cache (verified on disk)
-  if (serverMediaCache[cleanKey]) return serverMediaCache[cleanKey];
-  if (serverMediaCache[baseKey]) return serverMediaCache[baseKey];
-  if (serverMediaCache[key]) return serverMediaCache[key];
+  // 4. Permanent server cache (verified on disk / manifest)
+  if (serverMediaCache[cleanKey]) return formatImageDirectUrl(serverMediaCache[cleanKey]);
+  if (serverMediaCache[baseKey]) return formatImageDirectUrl(serverMediaCache[baseKey]);
+  if (serverMediaCache[key]) return formatImageDirectUrl(serverMediaCache[key]);
 
   return null;
 }
@@ -532,6 +599,15 @@ export async function initMediaStore(): Promise<void> {
             serverMediaCache[k] = item.url;
             const clean = k.replace(/^__MEDIA__/, '').trim();
             serverMediaCache[clean] = item.url;
+            const baseKey = clean.replace(/\.[a-zA-Z0-9]+$/, '');
+            if (baseKey && baseKey !== clean) {
+              serverMediaCache[baseKey] = item.url;
+            }
+            saveCustomMediaUrl(k, item.url);
+            saveCustomMediaUrl(clean, item.url);
+            if (baseKey && baseKey !== clean) {
+              saveCustomMediaUrl(baseKey, item.url);
+            }
           }
         });
       }
